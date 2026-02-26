@@ -2,4 +2,14 @@
 {% block content %}
   <h1>Welcome to Movie Review</h1>
   <p>The website to share your reviews on movies with everyone!</p>
+  <h2>We have...</h2>
+  <ul>
+    <li>{{ num_movies }} Movie{{ num_movies|pluralize }}</li>
+    <li>{{ num_reviews }} Review{{ num_reviews|pluralize }}</li>
+  </ul>
+  <h2>...on our webpage!</h2>
+
+  <hr>
+  <p>Want to know hom many times you've visited us?</p>
+  <p>You've been with us {{ num_visits }} time{{ num_visits|pluralize }}!</p>
 {% endblock %}
