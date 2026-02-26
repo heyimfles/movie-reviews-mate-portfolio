@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Review List</h1>
+  <a href="{% url 'movie_review:review_create' %}">Leave a Review</a>
+  {% if review_list %}
+    {% for review in movie_list %}
+      <div>
+        <h2>{{ review.title }} (by {{ review.author }})</h2>
+        <p>for {{ review.movie.name }} with {{ review.rating }} star rating</p>
+        <hr>
+        <p>{{ review__comments.count }} comment{{ review__comments.count|pluralize }}</p>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No Reviews yet!</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Movie List</h1>
+  <a href="{% url 'movie_review:movie_create' %}">Add a movie</a>
+  {% if movie_list %}
+    {% for movie in movie_list %}
+      <div>
+        <h2>{{movie.name}} ({{ movie.year }}</h2>
+        <p>with average rating of {{ movie.avg_rating }}</p>
+        <hr>
+        <p>{{ movie__reviews.count }} review{{ movie__reviews.count|pluralize }}</p>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No Movies yet!</p>
+  {% endif %}
+{% endblock %}
