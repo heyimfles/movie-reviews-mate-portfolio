@@ -9,6 +9,34 @@
   </ul>
   <h2>...on our webpage!</h2>
 
+  <div>
+    <h3>Latest Movies:</h3>
+    {% if latest_movies %}
+      {% for movie in latest_movies %}
+        <div>
+          <h4>{{ movie.title }} ({{ movie.year }})</h4>
+          <p>{{ movie.avg_rating }}</p>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No Movies yet.</p>
+    {% endif %}
+  </div>
+
+  <div>
+    <h3>Latest Reviews:</h3>
+    {% if latest_reviews %}
+      {% for review in latest_reviews %}
+        <div>
+          <h4>{{ review.title }} by {{ review.author }}</h4>
+          <p>for {{ review.movie }} with {{ review.rating }} rating</p>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No Reviews yet.</p>
+    {% endif %}
+  </div>
+
   <hr>
   <p>Want to know hom many times you've visited us?</p>
   <p>You've been with us {{ num_visits }} time{{ num_visits|pluralize }}!</p>

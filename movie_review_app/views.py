@@ -18,10 +18,15 @@ def index(request):
     num_visits = request.session.get('num_visits', 0)
     request.session["num_visits"] = num_visits + 1
 
+    last_three_movies = Movie.objects.order_by("-created_at")[:3]
+    last_three_reviews = Review.objects.order_by("-created_at")[:3]
+
     context = {
         "num_movies": num_movies,
         "num_reviews": num_reviews,
-        "num_visits": num_visits
+        "num_visits": num_visits,
+        "last_three_movies": last_three_movies,
+        "last_three_reviews": last_three_reviews,
     }
 
     return render(request, "movie_review/index.html", context)

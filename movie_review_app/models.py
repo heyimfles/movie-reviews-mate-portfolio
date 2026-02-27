@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -78,12 +80,12 @@ class Review(models.Model):
     rating = models.SmallIntegerField(
         choices=RATING_CHOICES,
     )
-    created_time = models.DateTimeField(
+    created_at = models.DateTimeField(
         auto_now_add=True,
     )
 
     class Meta:
-        ordering = ["-created_time"]
+        ordering = ["-created_at"]
 
     def __str__(self):
         return (
@@ -107,7 +109,7 @@ class Comment(models.Model):
         on_delete=models.CASCADE,
         related_name="comments",
     )
-    created_time = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     review = models.ForeignKey(
         Review,
         on_delete=models.CASCADE,
@@ -115,7 +117,7 @@ class Comment(models.Model):
     )
 
     class Meta:
-        ordering = ["-created_time"]
+        ordering = ["-created_at"]
 
     def __str__(self):
         return f"Comment for {self.review}" f"by {self.author}"
