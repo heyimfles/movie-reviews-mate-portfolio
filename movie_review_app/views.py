@@ -41,7 +41,10 @@ class MovieListView(generic.ListView):
 
 class MovieCreateView(generic.CreateView):
     model = Movie
-    fields = "__all__"
+    fields = [
+        "name",
+        "year",
+    ]
     success_url = reverse_lazy("movie_review:movie_list")
     template_name = "movie_review/movie_form.html"
 
@@ -55,6 +58,11 @@ class ReviewListView(generic.ListView):
 
 class ReviewCreateView(generic.CreateView):
     model = Review
-    fields = "__all__"
+    fields = [
+        "title",
+        "content",
+        "movie",
+        "rating",
+    ]
     success_url = reverse_lazy("movie_review:review_list")
     template_name = "movie_review/review_form.html"
