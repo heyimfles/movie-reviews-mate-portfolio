@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render, redirect
 from django.views import generic
 from django.urls import reverse_lazy
 
+from movie_review_app.forms import ReviewForm, MovieForm
 from movie_review_app.models import (
     Movie,
     Review,
@@ -32,37 +34,54 @@ def index(request):
     return render(request, "movie_review/index.html", context)
 
 
-class MovieListView(generic.ListView):
+class MovieListView(LoginRequiredMixin, generic.ListView):
     model = Movie
     context_object_name = "movie_list"
     template_name = "movie_review/movie_list.html"
     paginate_by = 10
 
 
-class MovieCreateView(generic.CreateView):
+class MovieCreateView(LoginRequiredMixin, generic.CreateView):
     model = Movie
-    fields = [
-        "name",
-        "year",
-    ]
+    form_class = MovieForm
     success_url = reverse_lazy("movie_review:movie_list")
     template_name = "movie_review/movie_form.html"
 
 
-class ReviewListView(generic.ListView):
+class MovieDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Movie
+    template_name = "movie_review/movie_detail.html"
+
+
+class MovieUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Movie
+    form_class = MovieForm
+    template_name = "movie_review/movie_form.html"
+
+    def get_success_url(self):
+        movie_id = self.object.id
+        return reverse_lazy("movie_review:movie_detail", kwargs={"pk": movie_id})
+
+
+class MovieDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Movie
+    template_name = "movie_review/movie_confirm_delete.html"
+    success_url = reverse_lazy("movie_review:movie_list")
+
+
+class ReviewListView(LoginRequiredMixin, generic.ListView):
     model = Review
     context_object_name = "review_list"
     template_name = "movie_review/review_list.html"
     paginate_by = 5
 
 
-class ReviewCreateView(generic.CreateView):
-    model = Review
-    fields = [
-        "title",
-        "content",
-        "movie",
-        "rating",
-    ]
+class ReviewCreateView(LoginRequiredMixin, generic.CreateView):
+    form_class = ReviewForm
     success_url = reverse_lazy("movie_review:review_list")
     template_name = "movie_review/review_form.html"
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+

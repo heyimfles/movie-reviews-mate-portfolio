@@ -3,12 +3,14 @@
   <h1>Review List</h1>
   <a href="{% url 'movie_review:review_create' %}">Leave a Review</a>
   {% if review_list %}
-    {% for review in movie_list %}
+    {% for review in review_list %}
       <div>
-        <h2>{{ review.title }} (by {{ review.author }})</h2>
+        <h2>
+          {{ review.title }} (by {{ review.author.first_name }} {{ review.author.last_name }})
+        </h2>
         <p>for {{ review.movie.name }} with {{ review.rating }} star rating</p>
         <hr>
-        <p>{{ review__comments.count }} comment{{ review__comments.count|pluralize }}</p>
+        <p>{{ review.comments.count }} comment{{ review.comments.count|pluralize }}</p>
       </div>
     {% endfor %}
   {% else %}

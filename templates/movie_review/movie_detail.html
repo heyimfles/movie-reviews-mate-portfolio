@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <h1>{{ movie.name }}</h1>
+  <h2>Release year: {{ movie.year }}</h2>
+  <hr>
+  <p>Average rating of the movie: {{ movie.avg_rating }}</p>
+  <hr>
+  <a href="{% url 'movie_review:movie_update' pk=movie.id %}">
+    Update
+  </a>
+  <a href="{% url 'movie_review:movie_delete' pk=movie.id %}">
+    Delete
+  </a>
+  <hr>
+  <h3>Reviews:</h3>
+  <div>
+    {% if movie.reviews.all %}
+      {% for review in movie.reviews.all %}
+        <div>
+          <h4>{{ review.title }} ({{ review.author.username }})</h4>
+          <p>Comments: {{ review.comments.count }}</p>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No reviews yet!</p>
+    {% endif %}
+  </div>
+
+{% endblock %}

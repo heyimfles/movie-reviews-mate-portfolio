@@ -5,10 +5,18 @@
   {% if movie_list %}
     {% for movie in movie_list %}
       <div>
-        <h2>{{movie.name}} ({{ movie.year }}</h2>
+        <h2>
+          <a href="{% url 'movie_review:movie_detail' pk=movie.id %}">
+            {{movie.name}} ({{ movie.year }})
+          </a>
+        </h2>
+        {% if movie.avg_rating == 0.0 %}
+          <p>Not yet rated.</p>
+        {% else %}
         <p>with average rating of {{ movie.avg_rating }}</p>
+        {% endif %}
         <hr>
-        <p>{{ movie__reviews.count }} review{{ movie__reviews.count|pluralize }}</p>
+        <p>{{ movie.reviews.count }} review{{ movie.reviews.count|pluralize }}</p>
       </div>
     {% endfor %}
   {% else %}
