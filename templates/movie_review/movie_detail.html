@@ -8,7 +8,7 @@
   <p>Average rating of the movie: {{ movie.format_avg }}</p>
   <hr>
   <a href="{% url 'movie_review:movie_update' pk=movie.id %}">
-    Update
+    Edit
   </a>
   <a href="{% url 'movie_review:movie_delete' pk=movie.id %}">
     Delete

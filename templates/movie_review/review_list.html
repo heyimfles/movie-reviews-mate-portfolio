@@ -9,7 +9,12 @@
           <a href="{% url 'movie_review:review_detail' pk=review.id %}">
             {{ review.title }}
           </a>
-          (by {{ review.author.first_name }} {{ review.author.last_name }})
+          (by
+          {% if review.author.first_name and review.author.last_name %}
+            {{ review.author.first_name }} {{ review.author.last_name }})
+          {% else %}
+            {{ review.author.username }})
+          {% endif %}
         </h2>
         <p>for {{ review.movie.name }}({{ review.movie.year }}) with {{ review.rating }} star rating</p>
         <hr>

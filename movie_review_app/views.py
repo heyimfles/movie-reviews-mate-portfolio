@@ -80,6 +80,18 @@ class ReviewDetailView(LoginRequiredMixin, generic.DetailView):
     model = Review
     template_name = "movie_review/review_detail.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        review = self.object
+        is_author = (
+                self.request.user.is_authenticated and
+                     (
+                             review.author == self.request.user
+                     )
+        )
+        context["is_author"] = is_author
+        return context
+
 
 class ReviewCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = ReviewForm
@@ -90,3 +102,17 @@ class ReviewCreateView(LoginRequiredMixin, generic.CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+
+class ReviewDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Review
+    template_name = "movie_review/review_confirm_delete.html"
+
+
+class ReviewUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Review
+    form_class = ReviewForm
+    template_name = "movie_review/review_form.html"
+
+    def get_success_url(self):
+        review_id = self.object.id
+        return reverse_lazy("movie_review:review_detail", kwargs={"pk": review_id})

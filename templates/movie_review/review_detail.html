@@ -2,7 +2,22 @@
 {% block content %}
   <div>
     <h1>{{ review.title }}</h1>
-    <h2>by {{ review.author.first_name }} {{ review.author.last_name }}</h2>
+    {% if is_author %}
+      <a href="{% url 'movie_review:review_update' pk=review.id %}">
+        Edit
+      </a>
+      <a href="{% url 'movie_review:review_delete' pk=review.id %}">
+        Delete
+      </a>
+    {% endif %}
+    <h2>
+      by
+      {% if review.author.first_name and review.author.last_name %}
+        {{ review.author.first_name }} {{ review.author.last_name }}
+      {% else %}
+        {{ review.author.username }}
+      {% endif %}
+    </h2>
     <h3>Movie:
       <a href="{% url 'movie_review:movie_detail' review.movie.pk %}">
         {{ review.movie.name }} ({{ review.movie.year }})
