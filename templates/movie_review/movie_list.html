@@ -13,7 +13,7 @@
         {% if movie.avg_rating == 0.0 %}
           <p>Not yet rated.</p>
         {% else %}
-        <p>with average rating of {{ movie.avg_rating }}</p>
+        <p>with average rating of {{ movie.format_avg }}</p>
         {% endif %}
         <hr>
         <p>{{ movie.reviews.count }} review{{ movie.reviews.count|pluralize }}</p>

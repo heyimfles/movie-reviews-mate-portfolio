@@ -6,9 +6,12 @@
     {% for review in review_list %}
       <div>
         <h2>
-          {{ review.title }} (by {{ review.author.first_name }} {{ review.author.last_name }})
+          <a href="{% url 'movie_review:review_detail' pk=review.id %}">
+            {{ review.title }}
+          </a>
+          (by {{ review.author.first_name }} {{ review.author.last_name }})
         </h2>
-        <p>for {{ review.movie.name }} with {{ review.rating }} star rating</p>
+        <p>for {{ review.movie.name }}({{ review.movie.year }}) with {{ review.rating }} star rating</p>
         <hr>
         <p>{{ review.comments.count }} comment{{ review.comments.count|pluralize }}</p>
       </div>

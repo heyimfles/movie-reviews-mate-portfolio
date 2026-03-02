@@ -5,7 +5,7 @@
   <h1>{{ movie.name }}</h1>
   <h2>Release year: {{ movie.year }}</h2>
   <hr>
-  <p>Average rating of the movie: {{ movie.avg_rating }}</p>
+  <p>Average rating of the movie: {{ movie.format_avg }}</p>
   <hr>
   <a href="{% url 'movie_review:movie_update' pk=movie.id %}">
     Update

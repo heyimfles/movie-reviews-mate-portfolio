@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+  <div>
+    <h1>{{ review.title }}</h1>
+    <h2>by {{ review.author.first_name }} {{ review.author.last_name }}</h2>
+    <h3>Movie:
+      <a href="{% url 'movie_review:movie_detail' review.movie.pk %}">
+        {{ review.movie.name }} ({{ review.movie.year }})
+      </a>
+    </h3>
+    <h3>Rating: {{ review.rating }} star{{ review.rating|pluralize }}</h3>
+  </div>
+  <div>
+  <p>{{ review.content }}</p>
+  </div>
+  <hr>
+  <div>
+    {% if review.comments.all %}
+      {% for comment in review.comments.all %}
+        <div>
+          <p><b>{{ comment.author.username }}</b></p>
+          <p>{{ comment.content }}</p>
+          <p>{{ comment.created_at }}</p>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No comments yet!</p>
+    {% endif %}
+  </div>
+{% endblock %}

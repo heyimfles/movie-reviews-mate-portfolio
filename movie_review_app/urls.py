@@ -5,7 +5,11 @@ from .views import (
     MovieListView,
     ReviewListView,
     MovieCreateView,
-    ReviewCreateView, MovieDetailView, MovieUpdateView, MovieDeleteView,
+    ReviewCreateView,
+    MovieDetailView,
+    MovieUpdateView,
+    MovieDeleteView,
+    ReviewDetailView,
 )
 
 
@@ -52,7 +56,8 @@ urlpatterns = [
     ),
     path(
         "reviews/<int:pk>/",
-
+        ReviewDetailView.as_view(),
+        name="review_detail"
     ),
 ]
 

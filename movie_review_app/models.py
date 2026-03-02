@@ -2,6 +2,7 @@ from datetime import datetime
 
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db.models import Avg
 
 
 class Movie(models.Model):
@@ -27,6 +28,14 @@ class Movie(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.year})"
+
+    def update_avg(self):
+        agg = self.reviews.aggregate(avg=Avg("rating"))
+        self.avg_rating = agg["avg"]
+        self.save()
+
+    def format_avg(self):
+        return f"{self.avg_rating:.1f}"
 
 
 class Viewer(AbstractUser):
@@ -96,6 +105,17 @@ class Review(models.Model):
             f"by {self.author} with"
             f"rating of {self.rating}"
         )
+
+    def save(self, *args, **kwargs):
+        created = self.pk is None
+        super().save(*args, **kwargs)
+        if created:
+            self.movie.update_movie_avg()
+
+    def delete(self, *args, **kwargs):
+        movie = self.movie
+        super().delete(*args, **kwargs)
+        movie.update_movie_avg()
 
 
 class Comment(models.Model):

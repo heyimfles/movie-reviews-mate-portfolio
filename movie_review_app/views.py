@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views import generic
 from django.urls import reverse_lazy
 
@@ -74,6 +74,11 @@ class ReviewListView(LoginRequiredMixin, generic.ListView):
     context_object_name = "review_list"
     template_name = "movie_review/review_list.html"
     paginate_by = 5
+
+
+class ReviewDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Review
+    template_name = "movie_review/review_detail.html"
 
 
 class ReviewCreateView(LoginRequiredMixin, generic.CreateView):

@@ -3,6 +3,6 @@
 {% block content %}
   {% include "includes/confirm_delete.html" %}
   {% block no_delete %}
-    <a href="{% url 'movie_review:movie_detail' pk=movie.id %}">No</a>
+    <a href="{% url 'movie_review:review_detail' pk=movie.id %}">No</a>
   {% endblock %}
 {% endblock %}
