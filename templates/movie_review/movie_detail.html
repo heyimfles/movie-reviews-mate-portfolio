@@ -19,7 +19,12 @@
     {% if movie.reviews.all %}
       {% for review in movie.reviews.all %}
         <div>
-          <h4>{{ review.title }} ({{ review.author.username }})</h4>
+          <h4>
+            <a href="{% url 'movie_review:review_detail' pk=review.id %}">
+              {{ review.title }} ({{ review.author.username }})
+            </a>
+          </h4>
+          <p>{{ review.rating }} star{{ review.rating|pluralize }}</p>
           <p>Comments: {{ review.comments.count }}</p>
         </div>
       {% endfor %}

@@ -11,11 +11,15 @@
 
   <div>
     <h3>Latest Movies:</h3>
-    {% if latest_movies %}
-      {% for movie in latest_movies %}
+    {% if last_three_movies %}
+      {% for movie in last_three_movies %}
         <div>
-          <h4>{{ movie.title }} ({{ movie.year }})</h4>
-          <p>{{ movie.avg_rating }}</p>
+          <h4>
+            <a href="{% url 'movie_review:movie_detail' pk=movie.id %}">
+              {{ movie.name }} ({{ movie.year }})
+            </a>
+          </h4>
+          <p>{{ movie.format_avg }}</p>
         </div>
       {% endfor %}
     {% else %}
@@ -25,10 +29,14 @@
 
   <div>
     <h3>Latest Reviews:</h3>
-    {% if latest_reviews %}
-      {% for review in latest_reviews %}
+    {% if last_three_reviews %}
+      {% for review in last_three_reviews %}
         <div>
-          <h4>{{ review.title }} by {{ review.author }}</h4>
+          <h4>
+            <a href="{% url 'movie_review:review_detail' pk=review.id %}">
+              {{ review.title }} by {{ review.author.username }}
+            </a>
+          </h4>
           <p>for {{ review.movie }} with {{ review.rating }} rating</p>
         </div>
       {% endfor %}

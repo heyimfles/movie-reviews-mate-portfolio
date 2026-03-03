@@ -110,12 +110,12 @@ class Review(models.Model):
         created = self.pk is None
         super().save(*args, **kwargs)
         if created:
-            self.movie.update_movie_avg()
+            self.movie.update_avg()
 
     def delete(self, *args, **kwargs):
         movie = self.movie
         super().delete(*args, **kwargs)
-        movie.update_movie_avg()
+        movie.update_avg()
 
 
 class Comment(models.Model):

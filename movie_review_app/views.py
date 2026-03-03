@@ -31,6 +31,9 @@ def index(request):
         "last_three_reviews": last_three_reviews,
     }
 
+    for movie in last_three_movies:
+        movie.update_avg()
+
     return render(request, "movie_review/index.html", context)
 
 
@@ -106,6 +109,7 @@ class ReviewCreateView(LoginRequiredMixin, generic.CreateView):
 class ReviewDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Review
     template_name = "movie_review/review_confirm_delete.html"
+    success_url = reverse_lazy("movie_review:review_list")
 
 
 class ReviewUpdateView(LoginRequiredMixin, generic.UpdateView):

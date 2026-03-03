@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-  {% include "includes/confirm_delete.html" %}
-  {% block no_delete %}
+  <h1>Delete movie?</h1>
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Yes">
     <a href="{% url 'movie_review:movie_detail' pk=movie.id %}">No</a>
-  {% endblock %}
+  </form>
 {% endblock %}
