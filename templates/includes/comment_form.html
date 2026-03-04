@@ -1,0 +1,17 @@
+{% load crispy_forms_filters %}
+
+{% if user.is_authenticated %}
+  <div>
+    <form method="POST" action="">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+{% else %}
+  Please
+  <a href="{% url 'login' %}">
+    log in
+  </a>
+  to comment.
+{% endif %}

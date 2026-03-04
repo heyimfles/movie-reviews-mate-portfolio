@@ -5,6 +5,7 @@ from movie_review_app.models import (
     Review,
     Movie,
     Viewer,
+    Comment,
 )
 
 
@@ -37,3 +38,15 @@ class ViewerForm(forms.ModelForm):
             "first_name",
             "last_name",
         ]
+
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = (
+            "content",
+        )
+        labels = {
+            "content": "Leave a Comment!",
+        }

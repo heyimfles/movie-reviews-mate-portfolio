@@ -1,18 +1,19 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 from django.urls import reverse_lazy
 
 from movie_review_app.forms import (
     ReviewForm,
     MovieForm,
-    ViewerForm
+    ViewerForm,
+    CommentForm
 )
 from movie_review_app.models import (
     Movie,
     Review,
-    Viewer,
+    Viewer, Comment,
 )
 
 
@@ -38,7 +39,8 @@ def index(request):
     }
 
     for movie in last_three_movies:
-        movie.update_avg()
+        if movie.avg_rating != 0:
+            movie.update_avg()
 
     return render(request, "movie_review/index.html", context)
 
@@ -48,6 +50,11 @@ class MovieListView(LoginRequiredMixin, generic.ListView):
     context_object_name = "movie_list"
     template_name = "movie_review/movie_list.html"
     paginate_by = 10
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["is_stuff"] = self.request.user.is_staff or self.request.user.is_superuser
+        return context
 
 
 class MovieCreateView(LoginRequiredMixin, generic.CreateView):
@@ -99,7 +106,29 @@ class ReviewDetailView(LoginRequiredMixin, generic.DetailView):
                      )
         )
         context["is_author"] = is_author
+        context["form"] = kwargs.get(
+            "form",
+            CommentForm,
+        )
         return context
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+
+        if not request.user.is_authenticated:
+            return redirect("login")
+
+        form = CommentForm(request.POST)
+
+        if form.is_valid():
+            Comment.objects.create(
+                content=form.cleaned_data["content"],
+                author=self.request.user,
+                review=self.object,
+            )
+            return redirect("movie_review:review_detail", pk=self.object.id)
+
+        return self.render_to_response(self.get_context_data(**kwargs))
 
 
 class ReviewCreateView(LoginRequiredMixin, generic.CreateView):

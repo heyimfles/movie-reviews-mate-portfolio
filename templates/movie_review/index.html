@@ -19,7 +19,11 @@
               {{ movie.name }} ({{ movie.year }})
             </a>
           </h4>
-          <p>{{ movie.format_avg }}</p>
+          {% if movie.avg_rating > 0 %}
+            <p>{{ movie.format_avg }}</p>
+          {% else %}
+            <p>Movie is not rated yet.</p>
+          {% endif %}
         </div>
       {% endfor %}
     {% else %}

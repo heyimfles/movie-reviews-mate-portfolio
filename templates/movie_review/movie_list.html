@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
   <h1>Movie List</h1>
-  <a href="{% url 'movie_review:movie_create' %}">Add a movie</a>
+  {% if is_stuff %}
+    <a href="{% url 'movie_review:movie_create' %}">Add a movie</a>
+  {% endif %}
   {% if movie_list %}
     {% for movie in movie_list %}
       <div>
