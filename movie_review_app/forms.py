@@ -4,6 +4,7 @@ from django import forms
 from movie_review_app.models import (
     Review,
     Movie,
+    Viewer,
 )
 
 
@@ -25,4 +26,14 @@ class ReviewForm(forms.ModelForm):
             "content",
             "movie",
             "rating",
+        ]
+
+
+class ViewerForm(forms.ModelForm):
+    class Meta:
+        model = Viewer
+        fields = [
+            "favourite_movie",
+            "first_name",
+            "last_name",
         ]

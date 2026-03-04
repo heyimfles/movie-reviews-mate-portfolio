@@ -9,7 +9,7 @@ from .views import (
     MovieDetailView,
     MovieUpdateView,
     MovieDeleteView,
-    ReviewDetailView, ReviewDeleteView, ReviewUpdateView,
+    ReviewDetailView, ReviewDeleteView, ReviewUpdateView, ViewerDetailView, ViewerUpdateView,
 )
 
 
@@ -68,6 +68,16 @@ urlpatterns = [
         "reviews/<int:pk>/update/",
         ReviewUpdateView.as_view(),
         name="review_update"
+    ),
+    path(
+        "viewers/<int:pk>/",
+        ViewerDetailView.as_view(),
+        name="viewer_detail"
+    ),
+    path(
+        "viewers/<int:pk>/update/",
+        ViewerUpdateView.as_view(),
+        name="viewer_update"
     ),
 ]
 

@@ -10,7 +10,10 @@
   </a>
   {% if user.is_authenticated %}
     <p>
-      Hello, {{ user.username }}
+      Hello,
+      <a href="{% url 'movie_review:viewer_detail' pk=user.id %}">
+        {{ user.username }}
+      </a>
     </p>
     <form method="post" action="{% url 'logout' %}">
       {% csrf_token %}

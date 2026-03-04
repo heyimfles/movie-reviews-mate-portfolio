@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Hello, {{ viewer.username }}!</h1>
+  <h2>First name: {{ viewer.first_name }}</h2>
+  <h2>Last name: {{ viewer.last_name }}</h2>
+  <h2>
+    {% if viewer.favourite_movie %}
+      Your favourite movie is -
+      {{ viewer.favourite_movie.name }}
+      ({{ viewer.favourite_movie.year }})
+    {% else %}
+      Chose a favourite movie by editing your info.
+    {% endif %}
+  </h2>
+  <a href="{% url 'movie_review:viewer_update' pk=viewer.pk %}">
+    Edit Info
+  </a>
+  <hr>
+  <p>Your reviews:</p>
+  {% if viewer.reviews.all %}
+    {% for review in viewer.reviews.all %}
+      <div>
+        <p><b>{{ review.title }}</b></p>
+        <p>{{ review.movie.name }} ({{ review.movie.year }})</p>
+        <p>{{ review.rating }} star{{ review.rating|pluralize }}</p>
+      </div>
+    {% endfor %}
+  {% else %}
+  <p>You haven't left any reviews yet.</p>
+  {% endif %}
+{% endblock %}

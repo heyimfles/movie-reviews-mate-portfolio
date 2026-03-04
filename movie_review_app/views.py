@@ -1,12 +1,18 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import PermissionDenied
 from django.shortcuts import render
 from django.views import generic
 from django.urls import reverse_lazy
 
-from movie_review_app.forms import ReviewForm, MovieForm
+from movie_review_app.forms import (
+    ReviewForm,
+    MovieForm,
+    ViewerForm
+)
 from movie_review_app.models import (
     Movie,
     Review,
+    Viewer,
 )
 
 
@@ -120,3 +126,23 @@ class ReviewUpdateView(LoginRequiredMixin, generic.UpdateView):
     def get_success_url(self):
         review_id = self.object.id
         return reverse_lazy("movie_review:review_detail", kwargs={"pk": review_id})
+
+
+class ViewerDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Viewer
+    template_name = "movie_review/viewer_detail.html"
+
+    def post(self, request, *args, **kwargs):
+        viewer = self.object
+        if viewer != request.user:
+            raise PermissionDenied
+
+
+class ViewerUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Viewer
+    form_class = ViewerForm
+    template_name = "movie_review/viewer_form.html"
+
+    def get_success_url(self):
+        viewer_id = self.object.id
+        return reverse_lazy("movie_review:viewer_detail", kwargs={"pk": viewer_id})
