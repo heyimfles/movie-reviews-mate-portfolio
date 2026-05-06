@@ -1,35 +1,53 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
-  <h1>Welcome to Movie Review</h1>
-  <p>The website to share your reviews on movies with everyone!</p>
-  <h2>We have...</h2>
-  <ul>
-    <li>{{ num_movies }} Movie{{ num_movies|pluralize }}</li>
-    <li>{{ num_reviews }} Review{{ num_reviews|pluralize }}</li>
-  </ul>
-  <h2>...on our webpage!</h2>
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-3">
+      Welcome to Movie Review
+    </h1>
+    <p>
+      The website to share your reviews on movies with everyone!
+    </p>
+    <h2 class="display-4">
+      We have...
+    </h2>
+    <ul class="list-group shadow-sm rounded">
+      <li class="list-group-item py-3 font-weight-bold text-info">
+        {{ num_movies }} Movie{{ num_movies|pluralize }}
+      </li>
+      <li class="list-group-item py-3 font-weight-bold text-info">
+        {{ num_reviews }} Review{{ num_reviews|pluralize }}
+      </li>
+    </ul>
+    <h2 class="display-4">
+      ...on our webpage!
+    </h2>
+  </div>
+</div>
 
-  <div>
-    <h3>Latest Movies:</h3>
+<div class="container">
+  <div class="row">
     {% if last_three_movies %}
       {% for movie in last_three_movies %}
-        <div>
-          <h4>
-            <a href="{% url 'movie_review:movie_detail' pk=movie.id %}">
-              {{ movie.name }} ({{ movie.year }})
-            </a>
-          </h4>
-          {% if movie.avg_rating > 0 %}
-            <p>{{ movie.format_avg }}</p>
-          {% else %}
-            <p>Movie is not rated yet.</p>
-          {% endif %}
-        </div>
+          <div class="col-md-4">
+            <h4>
+              <a href="{% url 'movie_review:movie_detail' pk=movie.id %}">
+                {{ movie.name }} ({{ movie.year }})
+              </a>
+            </h4>
+            {% if movie.avg_rating > 0 %}
+              <p>{{ movie.format_avg }}</p>
+            {% else %}
+              <p>Movie is not rated yet.</p>
+            {% endif %}
+          </div>
       {% endfor %}
     {% else %}
       <p>No Movies yet.</p>
     {% endif %}
   </div>
+</div>
 
   <div>
     <h3>Latest Reviews:</h3>

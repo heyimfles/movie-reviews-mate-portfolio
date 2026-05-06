@@ -1,29 +1,53 @@
-<nav>
-  <a href="{% url 'movie_review:index' %}">
-    Homepage
-  </a>
-  <a href="{% url 'movie_review:movie_list' %}">
-    Movies
-  </a>
-  <a href="{% url 'movie_review:review_list' %}">
-    Reviews
-  </a>
-  {% if user.is_authenticated %}
-    <p>
+{% load static %}
+<div class="d-flex align-items-center">
+  <img
+      src="{% static 'imgs/movie.png' %}"
+      alt="Movie Review Logo"
+      class="navbar-logo mr-2"
+      width="30px"
+      height="30px">
+  <a class="navbar-brand" href="#">Movie Reviews</a>
+</div>
+<div class="collapse navbar-collapse" id="navbarsExample02">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a href="{% url 'movie_review:index' %}" class="nav-link">
+        Homepage
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="{% url 'movie_review:movie_list' %}" class="nav-link">
+        Movies
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="{% url 'movie_review:review_list' %}" class="nav-link">
+        Reviews
+      </a>
+    </li>
+  </ul>
+  <div class="d-flex align-items-center">
+    {% if user.is_authenticated %}
+
+    <p class="text-secondary font-weight-bold mb-0 mr-3">
       Hello,
-      <a href="{% url 'movie_review:viewer_detail' pk=user.id %}">
+      <a href="{% url 'movie_review:viewer_detail' pk=user.id %}" class="text-info">
         {{ user.username }}
       </a>
     </p>
-    <form method="post" action="{% url 'logout' %}">
-      {% csrf_token %}
-      <button type="submit">Logout</button>
-    </form>
-  {% else %}
-    <form method="post" action="{% url 'login' %}">
-      {% csrf_token %}
-      <button type="submit">Login</button>
-    </form>
-  {% endif %}
 
-</nav>
+    <form method="post" action="{% url 'logout' %}" class="mb-0">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+
+    {% else %}
+
+    <form method="post" action="{% url 'login' %}" class="mb-0">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-outline-info">Login</button>
+    </form>
+
+    {% endif %}
+  </div>
+</div>
