@@ -1,3 +1,11 @@
 .pink-jumbotron {
   background-color: #f2beca;
 }
+
+.form-control {
+    border-radius: 10px;
+}
+
+.btn {
+    border-radius: 10px;
+}
