@@ -1,22 +1,24 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class="jumbotron pink-jumbotron">
+
+<!-- header-jumbo part -->
+<div class="jumbotron pink-jumbotron shadow-sm rounded-lg">
   <div class="container">
-    <h1 class="display-3">
+    <h1 class="display-4 font-weight-bold mb-4 mt-4">
       Welcome to Movie Review
     </h1>
-    <p>
+    <p class="lead mb-5">
       The website to share your reviews on movies with everyone!
     </p>
     <h2 class="display-4">
       We have...
     </h2>
-    <ul class="list-group shadow-sm rounded">
-      <li class="list-group-item py-3 font-weight-bold text-info">
+    <ul class="list-group shadow border-0 rounded-lg overflow-hidden">
+      <li class="list-group-item py-3 font-weight-bold text-info d-flex justify-content-between">
         {{ num_movies }} Movie{{ num_movies|pluralize }}
       </li>
-      <li class="list-group-item py-3 font-weight-bold text-info">
+      <li class="list-group-item py-3 font-weight-bold text-warning d-flex justify-content-between">
         {{ num_reviews }} Review{{ num_reviews|pluralize }}
       </li>
     </ul>
@@ -28,21 +30,22 @@
 
 <hr>
 
+<!-- latest movies -->
 <div class="container mb-5">
 
   <div class="d-flex align-items-center justify-content-center mb-4">
     <img
         src="{% static 'images/film-reel.png' %}"
-        width="30"
-        height="30"
+        width="36"
+        height="36"
         class="mr-2">
     <h3 class="text-info font-weight-bold mb-0">
       Latest Movies
     </h3>
     <img
         src="{% static 'images/film-reel.png' %}"
-        width="30"
-        height="30"
+        width="36"
+        height="36"
         class="ml-2">
   </div>
 
@@ -52,7 +55,7 @@
       {% for movie in last_three_movies %}
 
           <div class="col-md-4 mb-4">
-            <div class="card border-info shadow-sm">
+            <div class="card card-index border-info shadow-sm rounded-lg h-100">
               <div class="card-body text-center">
                 <h4>
                   <a
@@ -84,21 +87,22 @@
   </div>
 </div>
 
+<!-- latest reviews -->
 <div class="container mb-5">
 
   <div class="d-flex align-items-center justify-content-center mb-4">
     <img
         src="{% static 'images/review.png' %}"
-        width="30"
-        height="30"
+        width="36"
+        height="36"
         class="mr-2">
     <h3 class="text-warning font-weight-bold mb-0 mr-2">
       Latest Reviews
     </h3>
     <img
         src="{% static 'images/review.png' %}"
-        width="30"
-        height="30"
+        width="36"
+        height="36"
         class="mr-2">
   </div>
 
@@ -108,7 +112,7 @@
       {% for review in last_three_reviews %}
 
     <div class="col-md-4 mb-4">
-      <div class="card border-warning shadow-sm">
+      <div class="card card-index border-warning shadow-sm">
         <div class="card-body text-center">
           <h4>
               <a
@@ -133,16 +137,19 @@
 
 <hr>
 
-<div class="jumbotron pink-jumbotron text-center mb-0">
-  <div class="container">
-    <h5 class="mb-2">
-      Want to know hom many times you've visited us?
-    </h5>
-    <p class="mb-0">
-      You've been with us
-      <span class="font-weight-bold text-info">{{ num_visits }}</span>
-      time{{ num_visits|pluralize }}!
-    </p>
+<!-- kind of a footer but only for visit counter -->
+<div class="container mb-5">
+  <div class="jumbotron pink-jumbotron text-center py-4 rounded-lg shadow-sm">
+    <div class="container">
+      <h5 class="mb-2">
+        Want to know hom many times you've visited us?
+      </h5>
+      <p class="mb-0">
+        You've been with us
+        <span class="font-weight-bold text-info">{{ num_visits }}</span>
+        time{{ num_visits|pluralize }}!
+      </p>
+    </div>
   </div>
 </div>
 

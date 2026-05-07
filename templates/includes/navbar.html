@@ -1,51 +1,73 @@
 {% load static %}
+
+<!-- logo and brand -->
 <div class="d-flex align-items-center">
-  <img
-      src="{% static 'images/movie.png' %}"
-      alt="Movie Review Logo"
-      class="navbar-logo mr-2"
-      width="30px"
-      height="30px">
-  <a class="navbar-brand" href="#">Movie Reviews</a>
+  <a class="navbar-brand d-flex align-items-center font-weight-bold" href="#">
+    <img
+        src="{% static 'images/movie.png' %}"
+        alt="Movie Review Logo"
+        class="navbar-logo mr-2"
+        width="30px"
+        height="30px">
+    <span class="brand-text">
+      Movie Reviews
+    </span>
+  </a>
 </div>
+
 <div class="collapse navbar-collapse" id="navbarsExample02">
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-      <a href="{% url 'movie_review:index' %}" class="nav-link">
+  <!-- navbar links  -->
+  <ul class="navbar-nav mx-auto">
+    <li class="nav-item mx-2">
+      <a
+          href="{% url 'movie_review:index' %}"
+          class="nav-link font-weight-bold">
         Homepage
       </a>
     </li>
-    <li class="nav-item">
-      <a href="{% url 'movie_review:movie_list' %}" class="nav-link">
+    <li class="nav-item mx-2">
+      <a
+          href="{% url 'movie_review:movie_list' %}"
+          class="nav-link font-weight-bold">
         Movies
       </a>
     </li>
-    <li class="nav-item">
-      <a href="{% url 'movie_review:review_list' %}" class="nav-link">
+    <li class="nav-item mx-2">
+      <a
+          href="{% url 'movie_review:review_list' %}"
+          class="nav-link font-weight-bold">
         Reviews
       </a>
     </li>
   </ul>
+  <!-- auth part -->
   <div class="d-flex align-items-center">
+
     {% if user.is_authenticated %}
 
-    <p class="text-secondary font-weight-bold mb-0 mr-3">
+    <p class="mb-0 mr-3 text-muted font-weight-bold">
       Hello,
-      <a href="{% url 'movie_review:viewer_detail' pk=user.id %}" class="text-info">
+      <a
+          href="{% url 'movie_review:viewer_detail' pk=user.id %}"
+          class="text-info">
         {{ user.username }}
       </a>
     </p>
 
     <form method="post" action="{% url 'logout' %}" class="mb-0">
       {% csrf_token %}
-      <button type="submit" class="btn btn-danger">Logout</button>
+      <button
+          type="submit"
+          class="btn btn-sm my-logout-btn">Logout</button>
     </form>
 
     {% else %}
 
     <form method="post" action="{% url 'login' %}" class="mb-0">
       {% csrf_token %}
-      <button type="submit" class="btn btn-outline-info">Login</button>
+      <button
+          type="submit"
+          class="btn btn-sm my-login-btn">Login</button>
     </form>
 
     {% endif %}
