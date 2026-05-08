@@ -87,3 +87,31 @@
     color: #ff6fa5;
     font-size: 1.4rem;
 }
+
+.movie-jumbotron {
+    background-color: #eaf9ff !important;
+    border-radius: 20px;
+}
+
+.rounded-lg {
+    border-radius: 18px !important;
+}
+
+.movie-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.12)!important;
+}
+
+.btn {
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.badge {
+    font-size: 0.9rem;
+    border-radius: 10px;
+}
