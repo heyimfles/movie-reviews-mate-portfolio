@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% block body_class %}pink-bg{% endblock %}
 {% block content %}
 
 <!-- header-jumbo part -->
@@ -123,7 +124,10 @@
                 by {{ review.author.username }}
               </a>
             </h4>
-          <p>for {{ review.movie }} with {{ review.rating }} star rating</p>
+          <p
+              class="text-warning font-weight-bold">
+            for {{ review.movie }} with {{ review.rating }} star rating
+          </p>
         </div>
       </div>
     </div>

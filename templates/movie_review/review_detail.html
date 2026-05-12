@@ -1,48 +1,148 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block body_class %}review-bg{% endblock %}
+
 {% block content %}
-  <div>
-    <h1>{{ review.title }}</h1>
+
+<div class="container mt-5 mb-5">
+
+  <!-- review header -->
+  <div class="jumbotron review-jumbotron shadow-sm rounded-lg">
+    <div class="text-center mb-4">
+      <img
+          src="{% static 'images/review.png' %}"
+          width="75"
+          height="75"
+          class="mb-3">
+
+      <h1 class="display-4 font-weight-bold text-warning">
+        {{ review.title }}
+      </h1>
+
+      <p class="lead text-muted mb-2">
+        by
+        <span class="font-weight-bold text-info">
+          {% if review.author.first_name and review.author.last_name %}
+            {{ review.author.first_name }} {{ review.author.last_name }}
+          {% else %}
+            {{ review.author.username }}
+          {% endif %}
+        </span>
+      </p>
+
+      <p class="mb-3">
+        <span class="badge badge-warning px-3 py-2">
+          {{ review.rating }} star{{ review.rating|pluralize }}
+        </span>
+      </p>
+
+      <p class="text-muted mb-0">
+        Reviewing
+        <a
+            href="{% url 'movie_review:movie_detail' review.movie.pk %}"
+            class="font-weight-bold text-info">
+          {{ review.movie.name }} ({{ review.movie.year }})
+        </a>
+      </p>
+    </div>
+
     {% if is_author %}
-      <a href="{% url 'movie_review:review_update' pk=review.id %}">
-        Edit
-      </a>
-      <a href="{% url 'movie_review:review_delete' pk=review.id %}">
-        Delete
-      </a>
+
+      <div class="text-center mt-4">
+        <a
+            href="{% url 'movie_review:review_update' pk=review.id %}"
+            class="btn btn-warning text-white shadow-sm rounded-pill px-4 py-2 mr-2">
+          Edit
+        </a>
+
+        <a
+            href="{% url 'movie_review:review_delete' pk=review.id %}"
+            class="btn btn-outline-danger shadow-sm rounded-pill px-4 py-2">
+          Delete
+        </a>
+      </div>
+
     {% endif %}
-    <h2>
-      by
-      {% if review.author.first_name and review.author.last_name %}
-        {{ review.author.first_name }} {{ review.author.last_name }}
-      {% else %}
-        {{ review.author.username }}
-      {% endif %}
+
+  </div>
+
+  <!-- review content -->
+  <div class="card border-0 shadow-sm rounded-lg mb-5">
+    <div class="card-body p-5">
+      <p class="review-content text-secondary mb-0">
+        {{ review.content }}
+      </p>
+    </div>
+  </div>
+
+  <!-- comments header -->
+  <div class="d-flex align-items-center justify-content-center mb-4">
+    <img
+        src="{% static 'images/comment.png' %}"
+        width="35"
+        height="35"
+        class="mr-3">
+
+    <h2 class="font-weight-bold brand-text mb-0">
+      Comments
     </h2>
-    <h3>Movie:
-      <a href="{% url 'movie_review:movie_detail' review.movie.pk %}">
-        {{ review.movie.name }} ({{ review.movie.year }})
-      </a>
-    </h3>
-    <h3>Rating: {{ review.rating }} star{{ review.rating|pluralize }}</h3>
+
+    <img
+        src="{% static 'images/comment.png' %}"
+        width="35"
+        height="35"
+        class="ml-3">
+
   </div>
-  <div>
-  <p>{{ review.content }}</p>
-  </div>
-  <hr>
-  <div>
-    {% if review.comments.all %}
-      {% for comment in review.comments.all %}
-        <div>
-          <p><b>{{ comment.author.username }}</b></p>
-          <p>{{ comment.content }}</p>
-          <p>{{ comment.created_at }}</p>
+
+  <!-- comments -->
+  {% if review.comments.all %}
+    {% for comment in review.comments.all %}
+      <div class="card border-0 pink-shadow rounded-lg mb-4 comment-card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+
+            <h5 class="font-weight-bold brand-text mb-0">
+              {{ comment.author.username }}
+            </h5>
+
+            <small class="text-muted">
+              {{ comment.created_at }}
+            </small>
+          </div>
+
+          <p class="text-secondary mb-0">
+            {{ comment.content }}
+          </p>
         </div>
-      {% endfor %}
-    {% else %}
-      <p>No comments yet!</p>
-    {% endif %}
+      </div>
+
+    {% endfor %}
+
+  {% else %}
+
+    <div class="jumbotron pink-jumbotron text-center shadow-sm rounded-lg py-4">
+      <h4 class="text-warning font-weight-bold">
+        No Comments Yet!
+      </h4>
+
+      <p class="text-muted mb-0">
+        Start the discussion
+      </p>
+    </div>
+
+  {% endif %}
+
+  <!-- comment form -->
+  <div class="card border-0 pink-shadow rounded-lg mt-5">
+    <div class="card-body p-4">
+      <h4 class="brand-text font-weight-bold mb-4">
+        Leave a Comment
+      </h4>
+      {% include "includes/comment_form.html" %}
+    </div>
   </div>
-  <div>
-    {% include "includes/comment_form.html" %}
-  </div>
+</div>
+
 {% endblock %}

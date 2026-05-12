@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block body_class %}movie-bg{% endblock %}
+
 {% block content %}
 
 <div class="container mt-5">
 
   <!-- movie header -->
-  <div class="jumbotron my-jumbotron shadow-sm rounded-lg text-center mb-5">
+  <div class="jumbotron movie-jumbotron shadow-sm rounded-lg text-center mb-5">
     <img
         src="{% static 'images/film-reel.png' %}"
         width="75"
@@ -56,7 +58,7 @@
     </a>
   </div>
 
-  <!-- reviews section -->
+  <!-- reviews section / header-->
   <div class="d-flex align-items-center justify-content-center mb-4">
     <img
         src="{% static 'images/review.png' %}"
@@ -76,6 +78,7 @@
 
   </div>
 
+  <!-- review section / review list -->
   {% if movie.reviews.all %}
     <div class="row">
 

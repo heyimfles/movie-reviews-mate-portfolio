@@ -31,7 +31,7 @@ class Movie(models.Model):
 
     def update_avg(self):
         agg = self.reviews.aggregate(avg=Avg("rating"))
-        self.avg_rating = agg["avg"]
+        self.avg_rating = agg["avg"] or 0
         self.save()
 
     def format_avg(self):

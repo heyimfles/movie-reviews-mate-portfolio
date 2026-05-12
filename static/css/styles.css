@@ -115,3 +115,91 @@
     font-size: 0.9rem;
     border-radius: 10px;
 }
+
+.review-jumbotron {
+    background-color: #fff7eb !important;
+    border-radius: 20px;
+}
+
+.review-content {
+    line-height: 1.9;
+    font-size: 1.1rem;
+}
+
+.comment-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comment-card:hover {
+    transform: translateY(-3px);
+}
+
+.pink-shadow {
+    box-shadow: 0 0 20px rgba(255, 111, 165, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pink-shadow:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(255, 111, 165, 0.45);
+}
+
+.pink-bg {
+    background: linear-gradient(
+        to bottom,
+        #ffffff 0%,
+        #fff0f6 100%
+    );
+    min-height: 100vh;
+}
+
+.movie-bg {
+    background: linear-gradient(
+        to bottom,
+        #ffffff 0%,
+        #eaf9ff 100%
+    );
+    min-height: 100vh;
+}
+
+.review-bg {
+    background: linear-gradient(
+        to bottom,
+        #ffffff 0%,
+        #fff8e6 100%
+    );
+    min-height: 100vh;
+}
+
+.pink-form input,
+.pink-form textarea,
+.pink-form select {
+    border-radius: 14px !important;
+    border: 1px solid #ffd6e7 !important;
+    padding: 12px !important;
+    transition: all 0.2s ease;
+}
+
+.pink-form input:focus,
+.pink-form textarea:focus,
+.pink-form select:focus {
+    border-color: #ff8fab !important;
+    box-shadow: 0 0 0 0.2rem rgba(255, 143, 171, 0.25) !important;
+}
+
+.pink-form textarea {
+    border-radius: 18px !important;
+    border: 1px solid #ffd6e7 !important;
+    padding: 16px !important;
+    resize: none;
+    transition: all 0.2s ease;
+}
+
+.pink-form textarea:focus {
+    border-color: #ff8fab !important;
+    box-shadow: 0 0 0 0.2rem rgba(255, 143, 171, 0.2) !important;
+}
+
+.pink-form textarea::placeholder {
+    color: #d98ca3;
+}

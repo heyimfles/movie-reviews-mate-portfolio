@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block body_class %}bg-light{% endblock %}
+
 {% block content %}
 
 <div class="container mt-5">
-  <div class="jumbotron my-jumbotron shadow-sm rounded-lg text-center py-5">
+  <div class="jumbotron shadow-sm rounded-lg text-center py-5">
     <img
         src="{% static 'images/movie.png' %}"
         width="80"

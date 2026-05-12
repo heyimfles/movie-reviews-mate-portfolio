@@ -1,17 +1,30 @@
 {% load crispy_forms_filters %}
 
 {% if user.is_authenticated %}
-  <div>
-    <form method="POST" action="">
-      {% csrf_token %}
-      {{ form|crispy }}
-      <input type="submit" value="Submit">
-    </form>
-  </div>
+      <form method="POST" action="">
+        {% csrf_token %}
+        <div class="pink-form">
+          {{ form|crispy }}
+        </div>
+
+        <div class="text-right mt-4">
+          <button
+              type="submit"
+              class="btn my-logout-btn px-4 py-2 rounded-pill shadow-sm">
+            Submit
+          </button>
+        </div>
+      </form>
+
 {% else %}
-  Please
-  <a href="{% url 'login' %}">
-    log in
-  </a>
-  to comment.
+    <p class="lead mb-3 text-secondary">
+      Please log in to join the discussion!
+    </p>
+
+    <a
+        href="{% url 'login' %}"
+        class="btn my-logout-btn px-4 py-2 rounded-pill shadow-sm">
+      Login
+    </a>
+  </div>
 {% endif %}

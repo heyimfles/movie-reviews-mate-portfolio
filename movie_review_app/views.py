@@ -39,7 +39,7 @@ def index(request):
     }
 
     for movie in last_three_movies:
-        if movie.avg_rating != 0:
+        if movie.reviews.exists():
             movie.update_avg()
 
     return render(request, "movie_review/index.html", context)
@@ -49,7 +49,7 @@ class MovieListView(LoginRequiredMixin, generic.ListView):
     model = Movie
     context_object_name = "movie_list"
     template_name = "movie_review/movie_list.html"
-    paginate_by = 10
+    paginate_by = 3
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -89,7 +89,7 @@ class ReviewListView(LoginRequiredMixin, generic.ListView):
     model = Review
     context_object_name = "review_list"
     template_name = "movie_review/review_list.html"
-    paginate_by = 5
+    paginate_by = 3
 
 
 class ReviewDetailView(LoginRequiredMixin, generic.DetailView):

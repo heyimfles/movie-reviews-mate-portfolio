@@ -1,11 +1,48 @@
 {% extends "base.html" %}
 {% load crispy_forms_filters %}
+{% load static %}
+
+{% block body_class %}review-bg{% endblock %}
 
 {% block content %}
-  <h1>{{ object|yesno:"Edit,Leave" }} a Review</h1>
-  <form action="" method="post" novalidate>
-    {% csrf_token %}
-    {{ form|crispy }}
-    <input type="submit" value="Submit">
-  </form>
+<body class="bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+        <div class="card shadow-sm border-0 mt-5">
+          <div class="card-body p-5 text-center">
+
+            <img
+              class="mb-4"
+              src="{% static 'images/popcorn.png' %}"
+              alt="Movie Review"
+              width="72"
+              height="72"
+            >
+
+            <h1 class="h3 mb-4 font-weight-bold">
+              {{ object|yesno:"Edit,Leave" }} a
+              <span class="font-weight-bold text-warning">
+                Review
+              </span>
+            </h1>
+
+            <form method="POST" action="">
+              {% csrf_token %}
+
+              {{ form|crispy }}
+
+              <input
+                type="submit"
+                value="Submit"
+                class="btn btn-info btn-lg btn-block mt-4"
+              >
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
 {% endblock %}

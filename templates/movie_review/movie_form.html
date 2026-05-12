@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load crispy_forms_filters %}
 {% load static %}
+
+{% block body_class %}movie-bg{% endblock %}
+
 {% block content %}
 <body class="bg-light">
   <div class="container">
@@ -18,7 +21,10 @@
             >
 
             <h1 class="h3 mb-4 font-weight-bold">
-              {{ object|yesno:"Modify,Add" }} a Movie
+              {{ object|yesno:"Modify,Add" }} a
+              <span class="font-weight-bold text-info">
+                Movie
+              </span>
             </h1>
 
             <form method="POST" action="">

@@ -48,5 +48,11 @@ class CommentForm(forms.ModelForm):
             "content",
         )
         labels = {
-            "content": "Leave a Comment!",
+            "content": "",
+        }
+        widgets = {
+            "content": forms.Textarea(attrs={
+                "placeholder": "blah blah blah...",
+                "rows": 4,
+            })
         }
