@@ -4,7 +4,7 @@
 {% block content %}
 
 <!-- header-jumbo part -->
-<div class="jumbotron pink-jumbotron shadow-sm rounded-lg">
+<div class="jumbotron pink-no-gradient-container shadow-sm rounded-lg">
   <div class="container">
     <h1 class="display-4 font-weight-bold mb-4 mt-4">
       Welcome to Movie Review
@@ -143,14 +143,14 @@
 
 <!-- kind of a footer but only for visit counter -->
 <div class="container mb-5">
-  <div class="jumbotron pink-jumbotron text-center py-4 rounded-lg shadow-sm">
+  <div class="jumbotron pink-no-gradient-container text-center py-4 rounded-lg shadow-sm">
     <div class="container">
       <h5 class="mb-2">
         Want to know hom many times you've visited us?
       </h5>
       <p class="mb-0">
         You've been with us
-        <span class="font-weight-bold text-info">{{ num_visits }}</span>
+        <span class="btn btn-light btn-sm font-weight-bold">{{ num_visits }}</span>
         time{{ num_visits|pluralize }}!
       </p>
     </div>

@@ -1,9 +1,3 @@
-.pink-jumbotron {
-    background-color: #f2beca;
-    border-radius: 20px;
-    padding: 4rem 2rem;
-}
-
 .form-control {
     border-radius: 10px;
 }
@@ -202,4 +196,102 @@
 
 .pink-form textarea::placeholder {
     color: #d98ca3;
+}
+
+.pink-no-gradient-container {
+    background: #ffa6c7;
+}
+
+.pink-gradient-container {
+    background: linear-gradient(
+        135deg,
+        #fff5f8 0%,
+        #ffe3ec 100%
+    );
+}
+
+.profile-picture-wrapper {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 25px rgba(255, 111, 165, 0.25);
+}
+
+.profile-picture {
+    border-radius: 30%;
+}
+
+.profile-info-card {
+    background-color: rgba(255,255,255,0.65);
+}
+
+.text-pink {
+    color: #ff6fa5;
+}
+
+.pink-btn {
+    background-color: #ff8fab;
+    color: white;
+    border: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.pink-btn:hover {
+    background-color: #ff6fa5;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.favourite-movie-box {
+    background-color: white;
+    color: #ff6fa5;
+    font-weight: 600;
+    box-shadow: 0 0 15px rgba(255, 111, 165, 0.15);
+}
+
+.profile-review-card {
+    transition: all 0.25s ease;
+    background-color: rgba(255,255,255,0.8);
+}
+
+.profile-review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 .75rem 1.5rem rgba(255, 111, 165, 0.2)!important;
+}
+
+.review-link {
+    text-decoration: none !important;
+    transition: color 0.2s ease;
+}
+
+.review-link:hover {
+    color: #ff4f8b;
+}
+
+.pink-badge {
+    background-color: #ffb3c6;
+    color: white;
+    font-size: 0.9rem;
+    border-radius: 12px;
+}
+
+.btn-outline-pink {
+    border: 2px solid #ff8fab;
+    color: #ff8fab;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-outline-pink:hover {
+    background-color: #ff8fab;
+    color: white;
+}
+
+.profile-empty-state {
+    background-color: rgba(255,255,255,0.75);
 }
