@@ -3,7 +3,7 @@
 
 {% block content %}
   <h1>Edit Info</h1>
-  <form action="" method="post" novalidate>
+  <form action="" method="post" novalidate class="pink-form">
     {% csrf_token %}
     {{ form|crispy }}
     <input type="submit" value="Submit">

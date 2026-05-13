@@ -12,6 +12,9 @@ from .views import (
     ReviewDetailView, ReviewDeleteView, ReviewUpdateView, ViewerDetailView, ViewerUpdateView,
 )
 
+from django.contrib.auth import views as auth_views
+from movie_review_app.forms import CustomLoginForm
+
 
 urlpatterns = [
     path(
@@ -79,6 +82,19 @@ urlpatterns = [
         ViewerUpdateView.as_view(),
         name="viewer_update"
     ),
+    path(
+        "login/",
+        auth_views.LoginView.as_view(
+            authentication_form=CustomLoginForm
+        ),
+        name="login",
+    ),
+    path(
+        "logout/",
+        auth_views.LogoutView.as_view(),
+        name="logout",
+    ),
+
 ]
 
 app_name = "movie_review"

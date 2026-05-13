@@ -1,4 +1,4 @@
-from crispy_forms.helper import FormHelper
+from django.contrib.auth.forms import AuthenticationForm
 from django import forms
 
 from movie_review_app.models import (
@@ -10,6 +10,7 @@ from movie_review_app.models import (
 
 
 class MovieForm(forms.ModelForm):
+
     class Meta:
         model = Movie
         fields = [
@@ -31,6 +32,7 @@ class ReviewForm(forms.ModelForm):
 
 
 class ViewerForm(forms.ModelForm):
+
     class Meta:
         model = Viewer
         fields = [
@@ -56,3 +58,22 @@ class CommentForm(forms.ModelForm):
                 "rows": 4,
             })
         }
+
+
+class CustomLoginForm(AuthenticationForm):
+
+    username = forms.CharField(
+        label="Username",
+        widget=forms.TextInput(attrs={
+            "placeholder": "cool name",
+            "class": "form-control",
+        })
+    )
+
+    password = forms.CharField(
+        label="Password",
+        widget=forms.PasswordInput(attrs={
+            "placeholder": "secret password",
+            "class": "form-control",
+        })
+    )

@@ -54,7 +54,7 @@
       </a>
     </p>
 
-    <form method="post" action="{% url 'logout' %}" class="mb-0">
+    <form method="post" action="{% url 'movie_review:logout' %}" class="mb-0">
       {% csrf_token %}
       <button
           type="submit"
@@ -63,7 +63,7 @@
 
     {% else %}
 
-    <form method="post" action="{% url 'login' %}" class="mb-0">
+    <form method="post" action="{% url 'movie_review:login' %}" class="mb-0">
       {% csrf_token %}
       <button
           type="submit"

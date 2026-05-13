@@ -5,10 +5,39 @@
 {% block body_class %}pink-bg{% endblock %}
 
 {% block content %}
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-5">
-      <div class="card shadow-sm border-0 mt-5">
+<div class="container py-5">
+  <div class="row align-items-center justify-content-center">
+
+    <!-- moderator card -->
+    <div class="col-lg-3 pink-gradient-container pink-shadow-no-hover border-0 rounded-lg h-100">
+        <div class="card-body text-center p-4">
+
+          <h4 class="text-info font-weight-bold mb-4">
+            Moderator
+          </h4>
+
+          <p class="mb-4">
+            Use these credentials to log in as a moderator.
+          </p>
+
+          <div class="credential-box rounded-lg p-3">
+            <p class="mb-2">
+              <span class="font-weight-bold">Username:</span>
+              movie_lover
+            </p>
+
+            <p class="mb-0">
+              <span class="font-weight-bold">Password:</span>
+              1qazcde3
+            </p>
+
+          </div>
+      </div>
+    </div>
+
+    <!-- login form -->
+    <div class="col-md-6 col-lg-5 mx-auto">
+      <div class="card shadow-sm border-0 mt-5 mb-5">
         <div class="card-body p-5 text-center">
 
           <img
@@ -23,7 +52,7 @@
             Please log in
           </h1>
 
-          <form method="POST" action="">
+          <form method="POST" action="" class="pink-form">
             {% csrf_token %}
 
             {{ form|crispy }}
@@ -38,6 +67,34 @@
         </div>
       </div>
     </div>
+
+    <!-- user card -->
+    <div class="col-lg-3 pink-gradient-container pink-shadow-no-hover border-0 rounded-lg h-100">
+        <div class="card-body text-center p-4">
+
+          <h4 class="text-info font-weight-bold mb-4">
+            User
+          </h4>
+
+          <p class="mb-4">
+            Use these credentials to log in as a regular user.
+          </p>
+
+          <div class="credential-box rounded-lg p-3">
+            <p class="mb-2">
+              <span class="font-weight-bold">Username:</span>
+              movie_hater
+            </p>
+
+            <p class="mb-0">
+              <span class="font-weight-bold">Password:</span>
+              3edczaq1
+            </p>
+
+          </div>
+      </div>
+    </div>
+
   </div>
 </div>
 {% endblock %}

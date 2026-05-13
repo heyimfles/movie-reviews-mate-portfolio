@@ -133,6 +133,11 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.pink-shadow-no-hover {
+    box-shadow: 0 0 20px rgba(255, 111, 165, 0.45);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
 .pink-shadow:hover {
     transform: translateY(-3px);
     box-shadow: 0 0 25px rgba(255, 111, 165, 0.45);
@@ -174,6 +179,18 @@
     transition: all 0.2s ease;
 }
 
+.pink-form textarea {
+    min-height: 120px;
+    resize: none;
+    padding-top: 14px !important;
+}
+
+.pink-form select {
+    height: 52px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
 .pink-form input:focus,
 .pink-form textarea:focus,
 .pink-form select:focus {
@@ -181,21 +198,19 @@
     box-shadow: 0 0 0 0.2rem rgba(255, 143, 171, 0.25) !important;
 }
 
-.pink-form textarea {
-    border-radius: 18px !important;
-    border: 1px solid #ffd6e7 !important;
-    padding: 16px !important;
-    resize: none;
-    transition: all 0.2s ease;
-}
-
-.pink-form textarea:focus {
-    border-color: #ff8fab !important;
-    box-shadow: 0 0 0 0.2rem rgba(255, 143, 171, 0.2) !important;
-}
-
 .pink-form textarea::placeholder {
     color: #d98ca3;
+}
+
+.pink-form label {
+    color: #ff6fa5;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+.asteriskField {
+    display: none;
 }
 
 .pink-no-gradient-container {
@@ -294,4 +309,43 @@
 
 .profile-empty-state {
     background-color: rgba(255,255,255,0.75);
+}
+
+.credential-card {
+    background-color: rgba(255,255,255,0.75);
+    transition: all 0.25s ease;
+}
+
+.credential-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 .75rem 1.5rem rgba(255,111,165,.15)!important;
+}
+
+.credential-box {
+    background-color: #fff0f6;
+}
+
+.pink-page-link {
+    color: #ff6fa5 !important;
+    border: none !important;
+    margin: 0 6px;
+    border-radius: 12px !important;
+    background-color: white !important;
+    box-shadow: 0 0 10px rgba(255, 111, 165, 0.12);
+    transition: all 0.2s ease;
+}
+
+.pink-page-link:hover {
+    background-color: #ffe3ec !important;
+    color: #ff4f8b !important;
+    transform: translateY(-2px);
+}
+
+.pink-page-active {
+    background-color: #ff8fab !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 12px !important;
+    margin: 0 6px;
+    box-shadow: 0 0 15px rgba(255, 111, 165, 0.25);
 }
