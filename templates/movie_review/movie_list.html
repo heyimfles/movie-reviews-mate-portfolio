@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_filters %}
 
 {% block body_class %}movie-bg{% endblock %}
 
@@ -20,9 +21,13 @@
       Movie List
     </h1>
 
-    <p class="lead text-muted mb-0">
+    <p class="lead text-muted mb-4">
       Check out the latest movies
     </p>
+
+  <form method="get" action="" class="pink-form">
+      {{ search_form|crispy }}
+  </form>
 
   </div>
 

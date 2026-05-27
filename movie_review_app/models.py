@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models import Avg
@@ -63,7 +61,8 @@ class Viewer(AbstractUser):
 class Review(models.Model):
     """
     This is review model, it has title, content, author,
-    movie and the rating for it which can be only chosen between written choices
+    movie and the rating for it
+    which can be only chosen between written choices
     """
     RATING_CHOICES = [
         (1, "Terrible"),

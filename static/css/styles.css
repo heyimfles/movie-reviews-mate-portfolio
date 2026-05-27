@@ -256,6 +256,14 @@
     transition: all 0.2s ease;
 }
 
+.pink-btn-static {
+    background-color: #ff8fab;
+    color: white;
+    border: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
 .pink-btn:hover {
     background-color: #ff6fa5;
     color: white;

@@ -13,6 +13,7 @@ admin.site.register(Movie)
 admin.site.register(Review)
 admin.site.register(Comment)
 
+
 @admin.register(Viewer)
 class ViewerAdmin(UserAdmin):
     pass

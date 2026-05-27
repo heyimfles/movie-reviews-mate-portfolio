@@ -9,7 +9,11 @@ from .views import (
     MovieDetailView,
     MovieUpdateView,
     MovieDeleteView,
-    ReviewDetailView, ReviewDeleteView, ReviewUpdateView, ViewerDetailView, ViewerUpdateView,
+    ReviewDetailView,
+    ReviewDeleteView,
+    ReviewUpdateView,
+    ViewerDetailView,
+    ViewerUpdateView,
 )
 
 from django.contrib.auth import views as auth_views

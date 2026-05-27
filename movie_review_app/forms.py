@@ -77,3 +77,16 @@ class CustomLoginForm(AuthenticationForm):
             "class": "form-control",
         })
     )
+
+
+class MovieSearchForm(forms.Form):
+    title = forms.CharField(
+        max_length=255,
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Search for a movie...",
+            }
+        ),
+        label="",
+    )

@@ -8,7 +8,8 @@ from movie_review_app.forms import (
     ReviewForm,
     MovieForm,
     ViewerForm,
-    CommentForm
+    CommentForm,
+    MovieSearchForm
 )
 from movie_review_app.models import (
     Movie,
@@ -53,7 +54,11 @@ class MovieListView(LoginRequiredMixin, generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["is_stuff"] = self.request.user.is_staff or self.request.user.is_superuser
+        context["is_stuff"] = (
+                self.request.user.is_staff or
+                self.request.user.is_superuser
+        )
+        context["search_form"] = MovieSearchForm()
         return context
 
 
@@ -76,7 +81,12 @@ class MovieUpdateView(LoginRequiredMixin, generic.UpdateView):
 
     def get_success_url(self):
         movie_id = self.object.id
-        return reverse_lazy("movie_review:movie_detail", kwargs={"pk": movie_id})
+        return (
+            reverse_lazy(
+                "movie_review:movie_detail",
+                kwargs={"pk": movie_id}
+            )
+        )
 
 
 class MovieDeleteView(LoginRequiredMixin, generic.DeleteView):
@@ -101,9 +111,7 @@ class ReviewDetailView(LoginRequiredMixin, generic.DetailView):
         review = self.object
         is_author = (
                 self.request.user.is_authenticated and
-                     (
-                             review.author == self.request.user
-                     )
+                (review.author == self.request.user)
         )
         context["is_author"] = is_author
         context["form"] = kwargs.get(
@@ -154,7 +162,10 @@ class ReviewUpdateView(LoginRequiredMixin, generic.UpdateView):
 
     def get_success_url(self):
         review_id = self.object.id
-        return reverse_lazy("movie_review:review_detail", kwargs={"pk": review_id})
+        return reverse_lazy(
+            "movie_review:review_detail",
+            kwargs={"pk": review_id}
+        )
 
 
 class ViewerDetailView(LoginRequiredMixin, generic.DetailView):
@@ -174,4 +185,7 @@ class ViewerUpdateView(LoginRequiredMixin, generic.UpdateView):
 
     def get_success_url(self):
         viewer_id = self.object.id
-        return reverse_lazy("movie_review:viewer_detail", kwargs={"pk": viewer_id})
+        return reverse_lazy(
+            "movie_review:viewer_detail",
+            kwargs={"pk": viewer_id}
+        )
