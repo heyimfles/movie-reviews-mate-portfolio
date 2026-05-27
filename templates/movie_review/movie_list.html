@@ -25,9 +25,12 @@
       Check out the latest movies
     </p>
 
-  <form method="get" action="" class="pink-form">
-      {{ search_form|crispy }}
-  </form>
+    <div class="d-flex justify-content-center">
+        <form method="get" action="" class="pink-form form-inline">
+          {{ search_form|crispy }}
+        <input type="submit" value="Search" class="btn pink-btn-static">
+      </form>
+    </div>
 
   </div>
 

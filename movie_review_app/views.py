@@ -51,6 +51,7 @@ class MovieListView(LoginRequiredMixin, generic.ListView):
     context_object_name = "movie_list"
     template_name = "movie_review/movie_list.html"
     paginate_by = 3
+    queryset = Movie.objects.order_by("-created_at")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -60,6 +61,13 @@ class MovieListView(LoginRequiredMixin, generic.ListView):
         )
         context["search_form"] = MovieSearchForm()
         return context
+
+    def get_queryset(self):
+        name = self.request.GET.get("name")
+        if name:
+            return self.queryset.filter(name__icontains=name)
+        else:
+            return self.queryset
 
 
 class MovieCreateView(LoginRequiredMixin, generic.CreateView):

@@ -80,7 +80,7 @@ class CustomLoginForm(AuthenticationForm):
 
 
 class MovieSearchForm(forms.Form):
-    title = forms.CharField(
+    name = forms.CharField(
         max_length=255,
         required=False,
         widget=forms.TextInput(
