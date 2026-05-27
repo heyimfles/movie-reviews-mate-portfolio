@@ -1,5 +1,8 @@
 from django.contrib.auth.forms import AuthenticationForm
 from django import forms
+from datetime import datetime
+
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 from movie_review_app.models import (
     Review,
@@ -10,6 +13,17 @@ from movie_review_app.models import (
 
 
 class MovieForm(forms.ModelForm):
+    MIN_MOVIE_YEAR = 1888
+    current_year = datetime.today().year
+    MAX_MOVIE_YEAR = current_year
+
+    year = forms.IntegerField(
+        required=True,
+        validators=[
+            MinValueValidator(MIN_MOVIE_YEAR),
+            MaxValueValidator(MAX_MOVIE_YEAR)
+        ]
+    )
 
     class Meta:
         model = Movie
