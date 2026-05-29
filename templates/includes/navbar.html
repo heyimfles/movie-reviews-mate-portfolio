@@ -26,18 +26,34 @@
       </a>
     </li>
     <li class="nav-item mx-2">
+      {% if user.is_authenticated %}
       <a
           href="{% url 'movie_review:movie_list' %}"
           class="nav-link font-weight-bold">
         Movies
       </a>
+      {% else %}
+        <a
+            href="{% url 'movie_review:login' %}"
+            class="nav-link font-weight-bold">
+          Movies
+        </a>
+      {% endif %}
     </li>
     <li class="nav-item mx-2">
+      {% if user.is_authenticated %}
       <a
           href="{% url 'movie_review:review_list' %}"
           class="nav-link font-weight-bold">
         Reviews
       </a>
+      {% else %}
+        <a
+            href="{% url 'movie_review:login' %}"
+            class="nav-link font-weight-bold">
+          Reviews
+        </a>
+      {% endif %}
     </li>
   </ul>
   <!-- auth part -->
