@@ -1,7 +1,12 @@
 from django.test import TestCase
 from unittest import mock
 
-from movie_review_app.models import Movie, Review, Viewer, Comment
+from movie_review_app.models import (
+    Movie,
+    Review,
+    Viewer,
+    Comment
+)
 
 
 class ModelsTests(TestCase):
@@ -67,3 +72,32 @@ class ModelsTests(TestCase):
         ) as mock_update_avg:
             self.positive_review.delete()
             mock_update_avg.assert_called_once()
+
+    def test_movie_string(self):
+        self.assertEqual(
+            str(self.movie),
+            f"{self.movie.name} ({self.movie.year})"
+        )
+
+    def test_viewer_string(self):
+        self.assertEqual(
+            str(self.viewer),
+            f"{self.viewer.username} "
+            f"({self.viewer.first_name} "
+            f"{self.viewer.last_name})"
+        )
+
+    def test_review_string(self):
+        self.assertEqual(
+            str(self.positive_review),
+            f"Review for {self.movie.name} "
+            f"by {self.positive_review.author} with "
+            f"rating of {self.positive_review.rating}"
+        )
+
+    def test_comment_string(self):
+        self.assertEqual(
+            str(self.comment),
+            f"Comment for {self.comment.review} " 
+            f"by {self.comment.author}"
+        )

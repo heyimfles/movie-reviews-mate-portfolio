@@ -100,8 +100,8 @@ class Review(models.Model):
 
     def __str__(self):
         return (
-            f"Review for {self.movie} "
-            f"by {self.author} with"
+            f"Review for {self.movie.name} "
+            f"by {self.author} with "
             f"rating of {self.rating}"
         )
 
@@ -142,4 +142,7 @@ class Comment(models.Model):
         ordering = ["-created_at"]
 
     def __str__(self):
-        return f"Comment for {self.review}" f"by {self.author}"
+        return (
+            f"Comment for {self.review} " 
+            f"by {self.author}"
+        )
