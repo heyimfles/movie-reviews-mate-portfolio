@@ -20,6 +20,7 @@
               height="72"
             >
 
+            {% if is_staff %}
             <h1 class="h3 mb-4 font-weight-bold">
               {{ object|yesno:"Modify,Add" }} a
               <span class="font-weight-bold text-info">
@@ -38,7 +39,13 @@
                 class="btn btn-info btn-lg btn-block mt-4"
               >
             </form>
-
+            {% else %}
+            <h4 class="h4 mb-4 font-weight-bold text-pink text-center">
+              You are not a moderator.
+              <br>
+              You cannot create or modify movies.
+            </h4>
+            {% endif %}
           </div>
         </div>
       </div>

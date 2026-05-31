@@ -109,6 +109,8 @@ AUTH_USER_MODEL = "movie_review_app.Viewer"
 
 LOGIN_REDIRECT_URL = "/"
 
+LOGIN_URL = "/login/"
+
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 

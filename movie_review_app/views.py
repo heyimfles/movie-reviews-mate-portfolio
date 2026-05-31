@@ -76,10 +76,26 @@ class MovieCreateView(LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy("movie_review:movie_list")
     template_name = "movie_review/movie_form.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["is_staff"] = (
+                self.request.user.is_staff or
+                self.request.user.is_superuser
+        )
+        return context
+
 
 class MovieDetailView(LoginRequiredMixin, generic.DetailView):
     model = Movie
     template_name = "movie_review/movie_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["is_staff"] = (
+                self.request.user.is_staff or
+                self.request.user.is_superuser
+        )
+        return context
 
 
 class MovieUpdateView(LoginRequiredMixin, generic.UpdateView):
@@ -101,6 +117,14 @@ class MovieDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Movie
     template_name = "movie_review/movie_confirm_delete.html"
     success_url = reverse_lazy("movie_review:movie_list")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["is_staff"] = (
+                self.request.user.is_staff or
+                self.request.user.is_superuser
+        )
+        return context
 
 
 class ReviewListView(LoginRequiredMixin, generic.ListView):
@@ -132,7 +156,10 @@ class ReviewDetailView(LoginRequiredMixin, generic.DetailView):
         self.object = self.get_object()
 
         if not request.user.is_authenticated:
-            return redirect("login")
+            url = reverse_lazy(
+                "movie_review:login"
+            )
+            return redirect(url)
 
         form = CommentForm(request.POST)
 

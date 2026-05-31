@@ -13,6 +13,8 @@
         height="80"
         class="mb-4">
 
+    {% if is_staff %}
+
     <h1 class="display-4 font-weight-bold text-danger mb-4">
       Delete Movie?
     </h1>
@@ -44,6 +46,14 @@
       </a>
 
     </form>
+
+    {% else %}
+      <h4 class="h4 mb-4 font-weight-bold text-pink text-center">
+        You are not a moderator.
+        <br>
+        You cannot delete movies.
+      </h4>
+    {% endif %}
 
   </div>
 

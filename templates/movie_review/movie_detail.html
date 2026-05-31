@@ -44,19 +44,21 @@
   </div>
 
   <!-- action buttons -->
-  <div class="text-center mb-5">
-    <a
-        href="{% url 'movie_review:movie_update' pk=movie.id %}"
-        class="btn btn-info btn-lg shadow-sm px-4 py-2 rounded-pill mr-2">
-      Edit
-    </a>
+  {% if is_staff %}
+    <div class="text-center mb-5">
+      <a
+          href="{% url 'movie_review:movie_update' pk=movie.id %}"
+          class="btn btn-info btn-lg shadow-sm px-4 py-2 rounded-pill mr-2">
+        Edit
+      </a>
 
-    <a
-        href="{% url 'movie_review:movie_delete' pk=movie.id %}"
-        class="btn btn-outline-danger btn-lg shadow-sm px-4 py-2 rounded-pill">
-      Delete
-    </a>
-  </div>
+      <a
+          href="{% url 'movie_review:movie_delete' pk=movie.id %}"
+          class="btn btn-outline-danger btn-lg shadow-sm px-4 py-2 rounded-pill">
+        Delete
+      </a>
+    </div>
+  {% endif %}
 
   <!-- reviews section / header-->
   <div class="d-flex align-items-center justify-content-center mb-4">
