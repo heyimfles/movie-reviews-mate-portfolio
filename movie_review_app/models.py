@@ -44,7 +44,7 @@ class Viewer(AbstractUser):
 
     favourite_movie = models.ForeignKey(
         Movie,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
         related_name="viewers",
         blank=True,
         null=True,

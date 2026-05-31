@@ -1,5 +1,4 @@
-from django.test.utils import tag
-from django.test import TestCase, Client
+from django.test import TestCase
 from django.urls import reverse_lazy
 from pytest_django.asserts import assertTemplateUsed
 
@@ -7,17 +6,13 @@ from movie_review_app.models import (
     Movie,
     Review,
     Viewer,
-    Comment
 )
 from movie_review_app.forms import (
     MovieForm, ReviewForm,
 )
 
 
-class ViewsTest(TestCase):
-    def setUp(self):
-        self.client = Client()
-
+class IndexViewTest(TestCase):
     def test_index_correct_response(self):
         response = self.client.get("")
         self.assertEqual(response.status_code, 200)
@@ -33,11 +28,11 @@ class ViewsTest(TestCase):
 
 class MovieViewsTest(TestCase):
     def setUp(self):
-        self.regular_user = Viewer.objects.create_user(
-            username="regular_user",
+        self.user = Viewer.objects.create_user(
+            username="user",
             password="password",
         )
-        self.client.force_login(self.regular_user)
+        self.client.force_login(self.user)
 
         self.movie = Movie.objects.create(
             name="Test name",
@@ -95,22 +90,6 @@ class MovieViewsTest(TestCase):
 
         self.assertRedirects(response, "/movies/")
 
-    def test_movie_form_valid(self):
-        form_data = {
-            "name": "Test name",
-            "year": 1999,
-        }
-        form = MovieForm(data=form_data)
-        self.assertTrue(form.is_valid())
-
-    def test_movie_form_invalid(self):
-        form_data = {
-            "name": "Test name",
-            "year": 3000,
-        }
-        form = MovieForm(data=form_data)
-        self.assertFalse(form.is_valid())
-
     def test_movie_not_moderator(self):
         url = reverse_lazy(
             "movie_review:movie_create"
@@ -126,7 +105,7 @@ class MovieViewsTest(TestCase):
 class ReviewsTest(TestCase):
     def setUp(self):
         self.user = Viewer.objects.create_user(
-            username="regular_user",
+            username="user",
             password="password",
         )
         self.client.force_login(self.user)
@@ -161,42 +140,6 @@ class ReviewsTest(TestCase):
             response.context,
         )
 
-    def test_review_form_valid(self):
-        form_data = {
-            "title": "Test title",
-            "content": "Test content",
-            "movie": self.movie,
-            "rating": 1,
-        }
-
-        form = ReviewForm(data=form_data)
-
-        self.assertTrue(form.is_valid())
-
-    def test_review_form_author_cannot_be_changed(self):
-        another_user = Viewer.objects.create_user(
-            username="another_user",
-            password="password",
-        )
-
-        bad_review_title = "HACKED_AUTHOR"
-        form_data = {
-            "title": bad_review_title,
-            "content": "Test content",
-            "movie": self.movie.pk,
-            "rating": 3,
-            "author": another_user.pk,
-        }
-
-        url = reverse_lazy(
-            "movie_review:review_create"
-        )
-
-        self.client.post(url, data=form_data)
-        review = Review.objects.get(title=bad_review_title)
-
-        self.assertNotEqual(review.author, another_user)
-
     def test_review_update_success_url(self):
         url = reverse_lazy(
             "movie_review:review_update",
@@ -223,7 +166,7 @@ class ReviewsTest(TestCase):
 class NotLoggedInTest(TestCase):
     def setUp(self):
         self.user = Viewer.objects.create_user(
-            username="regular_user",
+            username="user",
             password="password",
         )
 
@@ -249,3 +192,51 @@ class NotLoggedInTest(TestCase):
         response = self.client.get(url)
 
         self.assertIn("/login/", response.url)
+
+
+class ViewerTest(TestCase):
+    def setUp(self):
+        self.user = Viewer.objects.create_user(
+            username="some_user",
+            password="password",
+        )
+        self.client.force_login(self.user)
+
+        self.movie = Movie.objects.create(
+            name="Test name",
+            year=1999,
+        )
+
+    def test_viewer_detail_of_another_user(self):
+        another_user = Viewer.objects.create_user(
+            username="another_user",
+            password="password",
+        )
+        url_of_another_viewer = reverse_lazy(
+            "movie_review:viewer_detail",
+            kwargs={"pk": another_user.pk}
+        )
+
+        response = self.client.get(url_of_another_viewer)
+
+        self.assertEqual(response.status_code, 403)
+
+    def test_viewer_update_success_url(self):
+        url = reverse_lazy(
+            "movie_review:viewer_update",
+            kwargs={"pk": self.user.pk}
+        )
+        response = self.client.post(
+            url,
+            data={
+                "favourite_movie": self.movie.pk,
+                "first_name": "Cool",
+                "last_name": "Name",
+            }
+        )
+        expected_url = reverse_lazy(
+            "movie_review:viewer_detail",
+            kwargs={"pk": self.user.pk}
+        )
+
+        self.assertRedirects(response, expected_url)

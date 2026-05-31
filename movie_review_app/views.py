@@ -207,8 +207,15 @@ class ViewerDetailView(LoginRequiredMixin, generic.DetailView):
     model = Viewer
     template_name = "movie_review/viewer_detail.html"
 
+    def get(self, request, *args, **kwargs):
+        viewer = self.get_object()
+        if viewer != request.user:
+            raise PermissionDenied
+
+        return super().get(request, *args, **kwargs)
+
     def post(self, request, *args, **kwargs):
-        viewer = self.object
+        viewer = self.get_object()
         if viewer != request.user:
             raise PermissionDenied
 
