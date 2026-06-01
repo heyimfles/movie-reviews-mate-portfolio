@@ -1,6 +1,5 @@
 from django.test import TestCase
 from django.urls import reverse_lazy
-from pytest_django.asserts import assertTemplateUsed
 
 from movie_review_app.models import (
     Movie,

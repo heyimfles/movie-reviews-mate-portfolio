@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import (
+from movie_review_app.views import (
     index,
     MovieListView,
     ReviewListView,

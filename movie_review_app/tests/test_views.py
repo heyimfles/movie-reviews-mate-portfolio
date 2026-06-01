@@ -7,9 +7,6 @@ from movie_review_app.models import (
     Review,
     Viewer,
 )
-from movie_review_app.forms import (
-    MovieForm, ReviewForm,
-)
 
 
 class IndexViewTest(TestCase):
