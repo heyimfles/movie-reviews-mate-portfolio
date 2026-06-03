@@ -115,12 +115,6 @@ class MovieUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 
     def get_context_data(self, **kwargs):
-        print(
-            self.request.user,
-            self.request.user.is_authenticated,
-            self.request.user.is_staff,
-            self.request.user.is_superuser,
-        )
         context = super().get_context_data(**kwargs)
         context["is_staff"] = (
                 self.request.user.is_staff or
