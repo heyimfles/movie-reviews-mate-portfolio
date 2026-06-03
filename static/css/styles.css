@@ -1,0 +1,359 @@
+.form-control {
+    border-radius: 10px;
+}
+
+.btn {
+    border-radius: 10px;
+}
+
+.btn-outline-info,
+.btn-outline-warning {
+    border-width: 2px;
+    border-radius: 12px;
+}
+
+.card-index {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-index:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+.my-navbar {
+    background-color: #fff0f6;
+    border-radius: 0 0 20px 20px;
+}
+
+.nav-link {
+    color: #666 !important;
+    transition: 0.2s ease;
+    border-radius: 10px;
+    padding: 8px 14px !important;
+}
+
+.nav-link:hover {
+    background-color: #ffe3ec;
+    color: #ff6fa5 !important;
+}
+
+.my-login-btn {
+    background-color: #7dd3fc;
+    color: white;
+    border-radius: 12px;
+    padding: 6px 18px;
+    border: none;
+    font-weight: 600;
+}
+
+.my-homepage-btn {
+    background-color: #ffc107;
+    color: white;
+    border-radius: 12px;
+    padding: 6px 18px;
+    border: none;
+    font-weight: 600;
+}
+
+.my-login-btn:hover {
+    background-color: #38bdf8;
+}
+
+.my-homepage-btn:hover {
+    background-color: #f7a100;
+}
+
+.my-logout-btn {
+    background-color: #ffb3c6;
+    color: white;
+    border-radius: 12px;
+    padding: 6px 18px;
+    border: none;
+    font-weight: 600;
+}
+
+.my-logout-btn:hover {
+    background-color: #ff8fab;
+}
+
+.brand-text {
+    color: #ff6fa5;
+    font-size: 1.4rem;
+}
+
+.movie-jumbotron {
+    background-color: #eaf9ff !important;
+    border-radius: 20px;
+}
+
+.rounded-lg {
+    border-radius: 18px !important;
+}
+
+.movie-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.12)!important;
+}
+
+.btn {
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.badge {
+    font-size: 0.9rem;
+    border-radius: 10px;
+}
+
+.review-jumbotron {
+    background-color: #fff7eb !important;
+    border-radius: 20px;
+}
+
+.review-content {
+    line-height: 1.9;
+    font-size: 1.1rem;
+}
+
+.comment-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comment-card:hover {
+    transform: translateY(-3px);
+}
+
+.pink-shadow {
+    box-shadow: 0 0 20px rgba(255, 111, 165, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pink-shadow-no-hover {
+    box-shadow: 0 0 20px rgba(255, 111, 165, 0.45);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pink-shadow:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(255, 111, 165, 0.45);
+}
+
+.pink-bg {
+    background: linear-gradient(
+        to bottom,
+        #ffffff 0%,
+        #fff0f6 100%
+    );
+    min-height: 100vh;
+}
+
+.movie-bg {
+    background: linear-gradient(
+        to bottom,
+        #ffffff 0%,
+        #eaf9ff 100%
+    );
+    min-height: 100vh;
+}
+
+.review-bg {
+    background: linear-gradient(
+        to bottom,
+        #ffffff 0%,
+        #fff8e6 100%
+    );
+    min-height: 100vh;
+}
+
+.pink-form input,
+.pink-form textarea,
+.pink-form select {
+    border-radius: 14px !important;
+    border: 1px solid #ffd6e7 !important;
+    padding: 12px !important;
+    transition: all 0.2s ease;
+}
+
+.pink-form textarea {
+    min-height: 120px;
+    resize: none;
+    padding-top: 14px !important;
+}
+
+.pink-form select {
+    height: 52px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.pink-form input:focus,
+.pink-form textarea:focus,
+.pink-form select:focus {
+    border-color: #ff8fab !important;
+    box-shadow: 0 0 0 0.2rem rgba(255, 143, 171, 0.25) !important;
+}
+
+.pink-form textarea::placeholder {
+    color: #d98ca3;
+}
+
+.pink-form label {
+    color: #ff6fa5;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+.asteriskField {
+    display: none;
+}
+
+.pink-no-gradient-container {
+    background: #ffa6c7;
+}
+
+.pink-gradient-container {
+    background: linear-gradient(
+        135deg,
+        #fff5f8 0%,
+        #ffe3ec 100%
+    );
+}
+
+.profile-picture-wrapper {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 25px rgba(255, 111, 165, 0.25);
+}
+
+.profile-picture {
+    border-radius: 30%;
+}
+
+.profile-info-card {
+    background-color: rgba(255,255,255,0.65);
+}
+
+.text-pink {
+    color: #ff6fa5;
+}
+
+.pink-btn {
+    background-color: #ff8fab;
+    color: white;
+    border: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.pink-btn-static {
+    background-color: #ff8fab;
+    color: white;
+    border: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.pink-btn:hover {
+    background-color: #ff6fa5;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.favourite-movie-box {
+    background-color: white;
+    color: #ff6fa5;
+    font-weight: 600;
+    box-shadow: 0 0 15px rgba(255, 111, 165, 0.15);
+}
+
+.profile-review-card {
+    transition: all 0.25s ease;
+    background-color: rgba(255,255,255,0.8);
+}
+
+.profile-review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 .75rem 1.5rem rgba(255, 111, 165, 0.2)!important;
+}
+
+.review-link {
+    text-decoration: none !important;
+    transition: color 0.2s ease;
+}
+
+.review-link:hover {
+    color: #ff4f8b;
+}
+
+.pink-badge {
+    background-color: #ffb3c6;
+    color: white;
+    font-size: 0.9rem;
+    border-radius: 12px;
+}
+
+.btn-outline-pink {
+    border: 2px solid #ff8fab;
+    color: #ff8fab;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-outline-pink:hover {
+    background-color: #ff8fab;
+    color: white;
+}
+
+.profile-empty-state {
+    background-color: rgba(255,255,255,0.75);
+}
+
+.credential-card {
+    background-color: rgba(255,255,255,0.75);
+    transition: all 0.25s ease;
+}
+
+.credential-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 .75rem 1.5rem rgba(255,111,165,.15)!important;
+}
+
+.credential-box {
+    background-color: #fff0f6;
+}
+
+.pink-page-link {
+    color: #ff6fa5 !important;
+    border: none !important;
+    margin: 0 6px;
+    border-radius: 12px !important;
+    background-color: white !important;
+    box-shadow: 0 0 10px rgba(255, 111, 165, 0.12);
+    transition: all 0.2s ease;
+}
+
+.pink-page-link:hover {
+    background-color: #ffe3ec !important;
+    color: #ff4f8b !important;
+    transform: translateY(-2px);
+}
+
+.pink-page-active {
+    background-color: #ff8fab !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 12px !important;
+    margin: 0 6px;
+    box-shadow: 0 0 15px rgba(255, 111, 165, 0.25);
+}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body_class %}bg-light{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+  <div class="jumbotron shadow-sm rounded-lg text-center py-5">
+    <img
+        src="{% static 'images/movie.png' %}"
+        width="80"
+        height="80"
+        class="mb-4">
+
+    <h1 class="display-4 font-weight-bold text-danger mb-4">
+      Delete Review?
+    </h1>
+
+    <p class="lead text-muted mb-4">
+      Are you sure you want to
+      <span class="font-weight-bold text-warning">
+        delete your review
+      </span>
+      ?
+    </p>
+
+    <p class="text-muted mb-5">
+      This action cannot be undone
+    </p>
+
+    <form action="" method="post">
+      {% csrf_token %}
+      <button
+          type="submit"
+          class="btn btn-danger btn-lg shadow-sm px-4 py-2 rounded-pill mr-3">
+        Yes, Delete
+      </button>
+
+      <a
+          href="{% url 'movie_review:review_detail' pk=review.id %}"
+          class="btn btn-outline-warning btn-lg shadow-sm px-4 py-2 rounded-pill">
+        Cancel
+      </a>
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

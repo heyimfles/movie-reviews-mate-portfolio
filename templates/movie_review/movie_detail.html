@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body_class %}movie-bg{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+  <!-- movie header -->
+  <div class="jumbotron movie-jumbotron shadow-sm rounded-lg text-center mb-5">
+    <img
+        src="{% static 'images/film-reel.png' %}"
+        width="75"
+        height="75"
+        class="mb-4">
+
+    <h1 class="display-4 font-weight-bold text-info mb-3">
+      {{ movie.name }}
+    </h1>
+
+    <p class="lead text-muted mb-4">
+      Released in <span class="font-weight-bold">{{ movie.year }}</span>
+    </p>
+
+    {% if movie.avg_rating > 0 %}
+
+      <div class="d-inline-block px-4 py-2 rounded-pill bg-white shadow-sm">
+
+        <span class="font-weight-bold text-info">
+          Average Rating: {{ movie.format_avg }}
+        </span>
+
+      </div>
+
+    {% else %}
+      <div class="d-inline-block px-4 py-2 rounded-pill bg-white shadow-sm">
+        <span class="text-muted">
+          Not rated yet.
+        </span>
+      </div>
+    {% endif %}
+
+  </div>
+
+  <!-- action buttons -->
+  {% if is_staff %}
+    <div class="text-center mb-5">
+      <a
+          href="{% url 'movie_review:movie_update' pk=movie.id %}"
+          class="btn btn-info btn-lg shadow-sm px-4 py-2 rounded-pill mr-2">
+        Edit
+      </a>
+
+      <a
+          href="{% url 'movie_review:movie_delete' pk=movie.id %}"
+          class="btn btn-outline-danger btn-lg shadow-sm px-4 py-2 rounded-pill">
+        Delete
+      </a>
+    </div>
+  {% endif %}
+
+  <!-- reviews section / header-->
+  <div class="d-flex align-items-center justify-content-center mb-4">
+    <img
+        src="{% static 'images/review.png' %}"
+        width="35"
+        height="35"
+        class="mr-3">
+
+    <h2 class="font-weight-bold text-warning mb-0">
+      Reviews
+    </h2>
+
+    <img
+        src="{% static 'images/review.png' %}"
+        width="35"
+        height="35"
+        class="ml-3">
+
+  </div>
+
+  <!-- review section / review list -->
+  {% if movie.reviews.all %}
+    <div class="row">
+
+      {% for review in movie.reviews.all %}
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card border-0 shadow-sm rounded-lg h-100 movie-card">
+          <div class="card-body text-center d-flex flex-column">
+            <h4 class="mb-3">
+              <a
+                  href="{% url 'movie_review:review_detail' pk=review.id %}"
+                  class="btn btn-outline-warning btn-block font-weight-bold py-2">
+                {{ review.title }}
+                <br>
+                <small>
+                  by {{ review.author.username }}
+                </small>
+              </a>
+
+            </h4>
+            <p class="font-weight-bold text-warning mb-3">
+              {{ review.rating }} star{{ review.rating|pluralize }}
+            </p>
+
+            <div class="mt-auto">
+              <span class="badge badge-warning px-3 py-2">
+                {{ review.comments.count }} comment{{ review.comments.count|pluralize }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+
+  {% else %}
+    <div class="jumbotron review-jumbotron text-center shadow-sm rounded-lg">
+
+      <h3 class="text-info font-weight-bold">
+        No Reviews Yet!
+      </h3>
+
+      <p class="text-muted mb-0">
+        Be the first to review this movie 🎥
+      </p>
+
+    </div>
+
+  {% endif %}
+
+</div>
+
+{% endblock %}

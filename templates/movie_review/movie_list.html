@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_filters %}
+
+{% block body_class %}movie-bg{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+  <!-- header -->
+  <div class="jumbotron movie-jumbotron shadow-sm rounded-lg text-center mb-5">
+
+    <img
+        src="{% static 'images/film-reel.png' %}"
+        width="70"
+        height="70"
+        class="mb-3">
+
+    <h1 class="display-4 font-weight-bold text-info mb-3">
+      Movie List
+    </h1>
+
+    <p class="lead text-muted mb-4">
+      Check out the latest movies
+    </p>
+
+    <!-- search form for movies -->
+    <div class="d-flex justify-content-center">
+        <form method="get" action="" class="pink-form form-inline">
+          {{ search_form|crispy }}
+        <input type="submit" value="Search" class="btn pink-btn-static">
+      </form>
+    </div>
+
+  </div>
+
+  <!-- add movie button -->
+  {% if is_staff %}
+    <div class="text-center mb-5">
+      <a
+          class="btn btn-info btn-lg shadow-sm px-4 py-2 rounded-pill"
+          href="{% url 'movie_review:movie_create' %}">
+        + Add a Movie
+      </a>
+    </div>
+  {% endif %}
+
+  <!-- movies -->
+  {% if movie_list %}
+    <div class="row">
+
+      {% for movie in movie_list %}
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card border-0 shadow-sm h-100 rounded-lg movie-card">
+          <div class="card-body text-center">
+
+            <h4 class="mb-3">
+              <a
+                  href="{% url 'movie_review:movie_detail' pk=movie.id %}"
+                  class="btn btn-outline-info btn-block font-weight-bold py-2 stretched-link">
+                {{ movie.name }} ({{ movie.year }})
+              </a>
+            </h4>
+
+            {% if movie.avg_rating == 0.0 %}
+              <p class="text-muted font-weight-bold mb-3">
+                Not rated yet.
+              </p>
+
+            {% else %}
+              <p class="text-muted font-weight-bold mb-3">
+                Average rating:
+                <span class="text-warning font-weight-bold">
+                  {{ movie.format_avg }}
+                </span>
+              </p>
+
+            {% endif %}
+
+            <div class="mt-auto">
+              <span class="badge badge-info px-3 py-2">
+                {{ movie.reviews.count }} review{{ movie.reviews.count|pluralize }}
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      {% endfor %}
+
+    </div>
+
+  <!-- pagination -->
+  {% include "includes/pagination.html" %}
+
+  {% else %}
+    <div class="jumbotron my-jumbotron text-center shadow-sm rounded-lg">
+
+      <h3 class="text-info font-weight-bold">
+        No Movies Yet!
+      </h3>
+
+      {% if is_staff %}
+        <p class="text-muted mb-0">
+          Be the first to add one
+        </p>
+      {% endif %}
+
+    </div>
+  {% endif %}
+
+</div>
+
+{% endblock %}

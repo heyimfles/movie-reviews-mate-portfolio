@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body_class %}pink-bg{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5 pt-5">
+  <div class="jumbotron pink-jumbotron shadow-sm rounded-lg text-center py-5">
+
+    <img
+        src="{% static 'images/popcorn.png' %}"
+        alt="Logged out"
+        width="70"
+        height="70"
+        class="mb-4">
+
+    <h2 class="font-weight-bold text-dark mb-3">
+      You've been logged out!
+    </h2>
+    <p class="lead text-muted mb-4">
+      Hope to see you again soon
+    </p>
+
+    <a
+        href="{% url 'movie_review:login' %}"
+        class="btn my-login-btn mr-2 shadow-sm">
+      Login Again
+    </a>
+    <a
+        href="{% url 'movie_review:index' %}"
+        class="btn my-homepage-btn mr-2 shadow-sm">
+      Go to Homepage
+    </a>
+
+  </div>
+</div>
+
+{% endblock %}
