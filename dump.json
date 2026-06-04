@@ -1,0 +1,337 @@
+[
+{
+    "model": "movie_review_app.movie",
+    "pk": 10,
+    "fields": {
+        "name": "Iron Man",
+        "year": 2008,
+        "avg_rating": 2.5,
+        "created_at": "2026-05-31T18:29:22.425Z"
+    }
+},
+{
+    "model": "movie_review_app.movie",
+    "pk": 11,
+    "fields": {
+        "name": "The Truman Show",
+        "year": 1998,
+        "avg_rating": 3.5,
+        "created_at": "2026-05-31T18:29:58.016Z"
+    }
+},
+{
+    "model": "movie_review_app.movie",
+    "pk": 12,
+    "fields": {
+        "name": "Fight Club",
+        "year": 1999,
+        "avg_rating": 1.0,
+        "created_at": "2026-05-31T18:31:29.400Z"
+    }
+},
+{
+    "model": "movie_review_app.movie",
+    "pk": 13,
+    "fields": {
+        "name": "Harry Potter and the Prisoner of Azkaban",
+        "year": 2004,
+        "avg_rating": 2.0,
+        "created_at": "2026-05-31T18:32:36.913Z"
+    }
+},
+{
+    "model": "movie_review_app.movie",
+    "pk": 14,
+    "fields": {
+        "name": "Twilight",
+        "year": 2008,
+        "avg_rating": 3.5,
+        "created_at": "2026-05-31T18:33:09.727Z"
+    }
+},
+{
+    "model": "movie_review_app.movie",
+    "pk": 15,
+    "fields": {
+        "name": "Jurassic Park",
+        "year": 1993,
+        "avg_rating": 3.0,
+        "created_at": "2026-05-31T18:33:49.916Z"
+    }
+},
+{
+    "model": "movie_review_app.movie",
+    "pk": 16,
+    "fields": {
+        "name": "The Conjuring",
+        "year": 2013,
+        "avg_rating": 3.5,
+        "created_at": "2026-05-31T18:35:15.232Z"
+    }
+},
+{
+    "model": "movie_review_app.movie",
+    "pk": 17,
+    "fields": {
+        "name": "The Amazing Spider-Man",
+        "year": 2012,
+        "avg_rating": 3.0,
+        "created_at": "2026-05-31T18:38:02.249Z"
+    }
+},
+{
+    "model": "movie_review_app.movie",
+    "pk": 18,
+    "fields": {
+        "name": "Kill Bill: Volume 1",
+        "year": 2003,
+        "avg_rating": 4.0,
+        "created_at": "2026-05-31T18:38:46.435Z"
+    }
+},
+{
+    "model": "movie_review_app.viewer",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$D1RSYQxVe9Ck8HqHELrZCg$IZGyKPTtSeLRRfBPqgGYHCOo2JQ365XFsXRhGyFfSNs=",
+        "last_login": "2026-05-31T18:42:19.843Z",
+        "is_superuser": false,
+        "username": "movie_hater",
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "doejohn@doejohn.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-04T18:41:07Z",
+        "favourite_movie": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "movie_review_app.viewer",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$ISc1pB8weab56licEIBmKl$PtrxbvecDVNcZ+USn6BQNlcu79YafvvWfQhNVicJGV4=",
+        "last_login": "2026-05-31T18:25:13.421Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "admin@admin.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-05-31T18:24:55.908Z",
+        "favourite_movie": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "movie_review_app.viewer",
+    "pk": 8,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$q6WKT6uRyNm80450dBlwhs$dZ1hUQHfGQWc6FuQ8Vv3v+ljgRJSbm6+58pGDAtV5Pk=",
+        "last_login": "2026-06-03T16:28:26.398Z",
+        "is_superuser": false,
+        "username": "movie_lover",
+        "first_name": "Jane",
+        "last_name": "Doe",
+        "email": "janedoe@janedoe.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-05-31T18:25:33Z",
+        "favourite_movie": 16,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "movie_review_app.review",
+    "pk": 14,
+    "fields": {
+        "title": "TEAM IRON MAN",
+        "content": "and i don't want to hear anything else",
+        "author": 8,
+        "movie": 10,
+        "rating": 4,
+        "created_at": "2026-05-31T18:39:37.641Z"
+    }
+},
+{
+    "model": "movie_review_app.review",
+    "pk": 15,
+    "fields": {
+        "title": "Worst comfort series ever",
+        "content": "we love the atmosphere ig",
+        "author": 8,
+        "movie": 14,
+        "rating": 2,
+        "created_at": "2026-05-31T18:40:08.050Z"
+    }
+},
+{
+    "model": "movie_review_app.review",
+    "pk": 16,
+    "fields": {
+        "title": "Best spider man ever!",
+        "content": "love for all the spideys anyway",
+        "author": 8,
+        "movie": 17,
+        "rating": 5,
+        "created_at": "2026-05-31T18:40:30.318Z"
+    }
+},
+{
+    "model": "movie_review_app.review",
+    "pk": 17,
+    "fields": {
+        "title": "SCARY!!!",
+        "content": "but i liked it",
+        "author": 8,
+        "movie": 16,
+        "rating": 4,
+        "created_at": "2026-05-31T18:40:53.260Z"
+    }
+},
+{
+    "model": "movie_review_app.review",
+    "pk": 18,
+    "fields": {
+        "title": "Masterpiece",
+        "content": "Wow... just wow...",
+        "author": 8,
+        "movie": 11,
+        "rating": 5,
+        "created_at": "2026-05-31T18:41:11.485Z"
+    }
+},
+{
+    "model": "movie_review_app.review",
+    "pk": 19,
+    "fields": {
+        "title": "Nice atmosphere",
+        "content": "I guess if you're a dino fan...",
+        "author": 8,
+        "movie": 15,
+        "rating": 3,
+        "created_at": "2026-05-31T18:42:04.752Z"
+    }
+},
+{
+    "model": "movie_review_app.review",
+    "pk": 20,
+    "fields": {
+        "title": "TEAM CAPTAIN AMERICA!!!!",
+        "content": "I won't accept anything else",
+        "author": 6,
+        "movie": 10,
+        "rating": 1,
+        "created_at": "2026-05-31T18:42:52.657Z"
+    }
+},
+{
+    "model": "movie_review_app.review",
+    "pk": 21,
+    "fields": {
+        "title": "Absurd",
+        "content": "Is this supposed to be deep?",
+        "author": 6,
+        "movie": 11,
+        "rating": 2,
+        "created_at": "2026-05-31T18:43:12.043Z"
+    }
+},
+{
+    "model": "movie_review_app.review",
+    "pk": 22,
+    "fields": {
+        "title": "Even worse than Truman Show",
+        "content": "Didn't understand anything",
+        "author": 6,
+        "movie": 12,
+        "rating": 1,
+        "created_at": "2026-05-31T18:43:33.651Z"
+    }
+},
+{
+    "model": "movie_review_app.review",
+    "pk": 23,
+    "fields": {
+        "title": "FOR KIDS!!!",
+        "content": "and stupid adults",
+        "author": 6,
+        "movie": 13,
+        "rating": 2,
+        "created_at": "2026-05-31T18:43:55.267Z"
+    }
+},
+{
+    "model": "movie_review_app.review",
+    "pk": 24,
+    "fields": {
+        "title": "EDWARD BE MY MAN",
+        "content": "I wanna be a vampire too (he's so hot)",
+        "author": 6,
+        "movie": 14,
+        "rating": 5,
+        "created_at": "2026-05-31T18:44:37.198Z"
+    }
+},
+{
+    "model": "movie_review_app.review",
+    "pk": 25,
+    "fields": {
+        "title": "NOT SCARY",
+        "content": "I totally didn't jump multiple times",
+        "author": 6,
+        "movie": 16,
+        "rating": 3,
+        "created_at": "2026-05-31T18:45:06.919Z"
+    }
+},
+{
+    "model": "movie_review_app.review",
+    "pk": 26,
+    "fields": {
+        "title": "Toby is better",
+        "content": "There i said it",
+        "author": 6,
+        "movie": 17,
+        "rating": 1,
+        "created_at": "2026-05-31T18:45:25.034Z"
+    }
+},
+{
+    "model": "movie_review_app.review",
+    "pk": 27,
+    "fields": {
+        "title": "Samurai lady is cool",
+        "content": "I guess...",
+        "author": 6,
+        "movie": 18,
+        "rating": 4,
+        "created_at": "2026-05-31T18:46:28.434Z"
+    }
+},
+{
+    "model": "movie_review_app.comment",
+    "pk": 7,
+    "fields": {
+        "content": "NOOOOOOO TEAM CAPTAIN AMERICA GO GO GO",
+        "author": 6,
+        "created_at": "2026-05-31T18:47:02.741Z",
+        "review": 14
+    }
+},
+{
+    "model": "movie_review_app.comment",
+    "pk": 8,
+    "fields": {
+        "content": "IRON MAN SUCKS!!!",
+        "author": 6,
+        "created_at": "2026-05-31T18:47:09.192Z",
+        "review": 14
+    }
+}
+]
