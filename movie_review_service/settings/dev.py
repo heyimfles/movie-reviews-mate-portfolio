@@ -1,7 +1,5 @@
-from base import *
+from .base import *
 
-
-load_dotenv(BASE_DIR / ".env")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
@@ -17,4 +15,3 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
