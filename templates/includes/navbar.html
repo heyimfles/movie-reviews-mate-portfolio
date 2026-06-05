@@ -31,14 +31,14 @@
       <a
           href="{% url 'movie_review:movie_list' %}"
           class="nav-link font-weight-bold">
-        <img src="{% static 'images/movie.png' %}" class="nav-icon">
+        <img src="{% static 'images/film-reel.png' %}" class="nav-icon">
         <span class="nav-text">Movies</span>
       </a>
       {% else %}
         <a
             href="{% url 'movie_review:login' %}"
             class="nav-link font-weight-bold">
-          <img src="{% static 'images/movie.png' %}" class="nav-icon">
+          <img src="{% static 'images/film-reel.png' %}" class="nav-icon">
           <span class="nav-text">Movies</span>
         </a>
       {% endif %}
