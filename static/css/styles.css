@@ -360,48 +360,44 @@
 
 @media (max-width: 768px) {
 
-  .navbar-brand img {
-    width: 24px;
-    height: 24px;
-  }
-
-  .brand-text {
-    font-size: 0.95rem;
-  }
-
   .my-navbar {
-    flex-wrap: wrap;
-    padding: 10px 16px;
+    padding: 6px 10px;
   }
 
   .navbar-collapse {
     display: flex !important;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
     width: 100%;
-    margin-top: 8px;
-    max-height: calc(100vh - 60px);
-    overflow-y: auto;
   }
 
   .navbar-nav {
-    flex-direction: column !important;
-    width: 100%;
-    align-items: flex-start;
+    flex-direction: row !important;
+    width: auto;
   }
 
-  .navbar-nav .nav-item {
-    margin: 4px 0;
+  .nav-item {
+    margin: 0 6px;
+  }
+
+  .nav-icon {
+    width: 22px;
+    height: 22px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .nav-text {
+    display: none;
   }
 
   .navbar-collapse .d-flex {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    margin-top: 8px;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
   }
 
-
   body {
-    padding-top: 70px;
+    padding-top: 60px;
   }
 }

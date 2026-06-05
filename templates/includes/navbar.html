@@ -22,7 +22,8 @@
       <a
           href="{% url 'movie_review:index' %}"
           class="nav-link font-weight-bold">
-        Homepage
+        <img src="{% static 'images/popcorn.png' %}" class="nav-icon">
+        <span class="nav-text">Homepage</span>
       </a>
     </li>
     <li class="nav-item mx-2">
@@ -30,13 +31,15 @@
       <a
           href="{% url 'movie_review:movie_list' %}"
           class="nav-link font-weight-bold">
-        Movies
+        <img src="{% static 'images/movie.png' %}" class="nav-icon">
+        <span class="nav-text">Movies</span>
       </a>
       {% else %}
         <a
             href="{% url 'movie_review:login' %}"
             class="nav-link font-weight-bold">
-          Movies
+          <img src="{% static 'images/movie.png' %}" class="nav-icon">
+          <span class="nav-text">Movies</span>
         </a>
       {% endif %}
     </li>
@@ -45,13 +48,15 @@
       <a
           href="{% url 'movie_review:review_list' %}"
           class="nav-link font-weight-bold">
-        Reviews
+        <img src="{% static 'images/review.png' %}" class="nav-icon">
+        <span class="nav-text">Reviews</span>
       </a>
       {% else %}
         <a
             href="{% url 'movie_review:login' %}"
             class="nav-link font-weight-bold">
-          Reviews
+          <img src="{% static 'images/review.png' %}" class="nav-icon">
+          <span class="nav-text">Reviews</span>
         </a>
       {% endif %}
     </li>
