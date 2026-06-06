@@ -404,3 +404,7 @@
     padding-top: 60px;
   }
 }
+
+.nav-icon {
+    display: none;
+}
